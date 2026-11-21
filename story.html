@@ -1,0 +1,1291 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Discover the story behind LUMERA — An Era of Light. Learn about our vision, philosophy, and commitment to quality, customer trust, and affordable luxury.">
+
+    <title>Our Story | LUMERA — An Era of Light</title>
+
+    <style>
+
+        /* ==============================
+           GLOBAL STYLING
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            width: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            width: 100%;
+            min-width: 320px;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #F7F4EE;
+            color: #242321;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* ==============================
+           NAVBAR
+        ============================== */
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 50px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eeeeee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            gap: 20px;
+        }
+
+        .logo {
+            display: inline-flex;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 1px solid #a88955;
+            padding: 5px;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #222222;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #a88955;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-shrink: 0;
+        }
+
+        .nav-actions a {
+            color: #222222;
+            font-size: 13px;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-actions a:hover {
+            color: #a88955;
+        }
+
+        .wishlist-count,
+        .cart-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 18px;
+            height: 18px;
+            padding: 0 5px;
+            margin-left: 3px;
+            border-radius: 50%;
+            background-color: #a88955;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+
+        /* ==============================
+           STORY HERO
+        ============================== */
+
+        .story-hero {
+            min-height: 470px;
+            background-color: #EAE3D7;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        .small-heading {
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #92784F;
+            margin-bottom: 25px;
+        }
+
+        .story-hero h1 {
+            font-family: Georgia, serif;
+            font-size: 65px;
+            font-weight: normal;
+            letter-spacing: 3px;
+            margin-bottom: 22px;
+        }
+
+        .story-hero p {
+            max-width: 580px;
+            font-size: 14px;
+            line-height: 2;
+            color: #625D55;
+        }
+
+
+        /* ==============================
+           INTRODUCTION SECTION
+        ============================== */
+
+        .story-intro {
+            padding: 110px 12%;
+            text-align: center;
+        }
+
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #A68A5B;
+            margin-bottom: 25px;
+        }
+
+        .story-intro h2 {
+            font-family: Georgia, serif;
+            font-size: 43px;
+            font-weight: normal;
+            line-height: 1.4;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .story-intro p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 14px;
+            line-height: 2;
+            color: #706A61;
+        }
+
+
+        /* ==============================
+           MEANING SECTION
+        ============================== */
+
+        .meaning-section {
+            background-color: #EAE3D7;
+            padding: 95px 12%;
+            text-align: center;
+        }
+
+        .meaning-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .meaning-content h2 {
+            font-family: Georgia, serif;
+            font-size: 48px;
+            font-weight: normal;
+            line-height: 1.3;
+            margin-bottom: 25px;
+        }
+
+        .meaning-content > p {
+            font-size: 14px;
+            line-height: 2;
+            color: #625D55;
+            max-width: 650px;
+            margin: 0 auto 35px;
+        }
+
+        .meaning-parts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            margin-top: 45px;
+            text-align: left;
+        }
+
+        .meaning-part {
+            border-top: 1px solid #CFC2AE;
+            padding: 25px 15px;
+        }
+
+        .meaning-part h3 {
+            font-family: Georgia, serif;
+            font-size: 32px;
+            font-weight: normal;
+            color: #92784F;
+            margin-bottom: 12px;
+        }
+
+        .meaning-part p {
+            font-size: 13px;
+            color: #625D55;
+            line-height: 1.9;
+        }
+
+
+        /* ==============================
+           PHILOSOPHY SECTION
+        ============================== */
+
+        .philosophy-section {
+            padding: 110px 8%;
+            text-align: center;
+        }
+
+        .philosophy-section h2 {
+            font-family: Georgia, serif;
+            font-size: 44px;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .philosophy-intro {
+            max-width: 600px;
+            margin: 0 auto 65px;
+            font-size: 14px;
+            line-height: 1.9;
+            color: #706A61;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: left;
+        }
+
+        .value-card {
+            background-color: #EAE3D7;
+            padding: 45px 35px;
+            border: 1px solid #D8CCBA;
+            transition: transform 0.4s ease,
+                        background-color 0.4s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            background-color: #E5DCCC;
+        }
+
+        .value-number {
+            font-family: Georgia, serif;
+            font-size: 38px;
+            color: #A68A5B;
+            margin-bottom: 25px;
+        }
+
+        .value-card h3 {
+            font-family: Georgia, serif;
+            font-size: 25px;
+            font-weight: normal;
+            margin-bottom: 18px;
+        }
+
+        .value-card p {
+            font-size: 13px;
+            line-height: 1.9;
+            color: #706A61;
+        }
+
+
+        /* ==============================
+           OUR APPROACH
+        ============================== */
+
+        .approach-section {
+            background-color: #242321;
+            color: #F7F4EE;
+            padding: 105px 12%;
+            text-align: center;
+        }
+
+        .approach-section .section-label {
+            color: #C8B58F;
+        }
+
+        .approach-section h2 {
+            font-family: Georgia, serif;
+            font-size: 44px;
+            font-weight: normal;
+            margin-bottom: 28px;
+        }
+
+        .approach-section > p {
+            max-width: 750px;
+            margin: 0 auto;
+            font-size: 14px;
+            line-height: 2;
+            color: #C9C5BD;
+        }
+
+        .approach-divider {
+            width: 65px;
+            height: 1px;
+            background-color: #A88955;
+            margin: 40px auto;
+        }
+
+        .approach-highlight {
+            font-family: Georgia, serif;
+            font-size: 27px;
+            line-height: 1.7;
+            color: #C8B58F;
+        }
+
+
+        /* ==============================
+           BRAND PROMISE
+        ============================== */
+
+        .promise-section {
+            padding: 110px 10%;
+            text-align: center;
+        }
+
+        .promise-section h2 {
+            font-family: Georgia, serif;
+            font-size: 45px;
+            font-weight: normal;
+            margin-bottom: 25px;
+        }
+
+        .promise-section > p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 14px;
+            line-height: 2;
+            color: #706A61;
+        }
+
+        .promise-section a {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 16px 35px;
+            background-color: #242321;
+            color: #F7F4EE;
+            border: 1px solid #242321;
+            font-size: 11px;
+            letter-spacing: 2px;
+            transition: 0.3s ease;
+        }
+
+        .promise-section a:hover {
+            background-color: #A68A5B;
+            border-color: #A68A5B;
+        }
+
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            background-color: #242321;
+            color: #F7F4EE;
+            padding: 65px 8% 25px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 50px;
+        }
+
+        .footer-brand img {
+            width: 120px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            font-family: Georgia, serif;
+            font-size: 13px;
+            letter-spacing: 2px;
+            color: #C8B58F;
+        }
+
+        .footer-column h3 {
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 22px;
+            color: #C8B58F;
+        }
+
+        .footer-column a {
+            display: block;
+            font-size: 12px;
+            color: #C9C5BD;
+            margin-bottom: 14px;
+            transition: 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: #C8B58F;
+        }
+
+        .footer-column p {
+            font-size: 12px;
+            color: #C9C5BD;
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #45423D;
+            padding-top: 22px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            color: #A9A49B;
+        }
+
+
+        /* ==============================
+           SCROLL ANIMATION
+        ============================== */
+
+        /* Content remains visible if JavaScript
+           or IntersectionObserver is unavailable. */
+
+        .reveal {
+            opacity: 1;
+            transform: none;
+        }
+
+        .reveal-enabled .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.8s ease,
+                        transform 0.8s ease;
+        }
+
+        .reveal-enabled .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* ==============================
+           RESPONSIVE DESIGN
+        ============================== */
+
+        @media (max-width: 1100px) {
+
+            .navbar {
+                padding: 12px 25px;
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .nav-actions {
+                gap: 12px;
+            }
+
+            .meaning-section {
+                padding: 75px 8%;
+            }
+
+            .values-grid {
+                gap: 20px;
+            }
+
+            .value-card {
+                padding: 35px 25px;
+            }
+
+        }
+
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                padding: 12px 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px 25px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .nav-actions {
+                justify-content: center;
+                gap: 18px;
+            }
+
+            .story-hero h1 {
+                font-size: 46px;
+            }
+
+            .story-intro {
+                padding: 80px 8%;
+            }
+
+            .story-intro h2 {
+                font-size: 34px;
+            }
+
+            .meaning-section {
+                padding: 75px 8%;
+            }
+
+            .meaning-content h2 {
+                font-size: 36px;
+            }
+
+            .meaning-parts {
+                gap: 20px;
+            }
+
+            .philosophy-section {
+                padding: 80px 7%;
+            }
+
+            .philosophy-section h2 {
+                font-size: 36px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .approach-section {
+                padding: 80px 8%;
+            }
+
+            .approach-section h2 {
+                font-size: 36px;
+            }
+
+            .promise-section {
+                padding: 80px 8%;
+            }
+
+            .promise-section h2 {
+                font-size: 36px;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .navbar {
+                padding: 12px 15px;
+                gap: 12px;
+            }
+
+            .logo img {
+                width: 58px;
+                height: 58px;
+            }
+
+            .nav-links {
+                width: 100%;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px 18px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .nav-actions {
+                width: 100%;
+                justify-content: center;
+                gap: 25px;
+            }
+
+            .nav-actions a {
+                font-size: 12px;
+            }
+
+            .story-hero {
+                min-height: 350px;
+                padding: 70px 20px;
+            }
+
+            .story-hero h1 {
+                font-size: 34px;
+            }
+
+            .story-hero p {
+                font-size: 12px;
+            }
+
+            .story-intro {
+                padding: 65px 7%;
+            }
+
+            .story-intro h2 {
+                font-size: 29px;
+            }
+
+            .meaning-section {
+                padding: 65px 7%;
+            }
+
+            .meaning-content h2 {
+                font-size: 31px;
+            }
+
+            .meaning-parts {
+                grid-template-columns: 1fr;
+                gap: 5px;
+                margin-top: 30px;
+            }
+
+            .meaning-part {
+                padding: 20px 5px;
+            }
+
+            .philosophy-section h2 {
+                font-size: 31px;
+            }
+
+            .approach-section h2 {
+                font-size: 31px;
+            }
+
+            .approach-highlight {
+                font-size: 22px;
+            }
+
+            .promise-section h2 {
+                font-size: 32px;
+            }
+
+            .promise-section a {
+                padding: 15px 22px;
+                font-size: 10px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            footer {
+                padding: 50px 7% 25px;
+            }
+
+        }
+
+
+        @media (max-width: 360px) {
+
+            .nav-links {
+                gap: 10px 13px;
+            }
+
+            .nav-links a,
+            .nav-actions a {
+                font-size: 11px;
+            }
+
+            .story-hero h1 {
+                font-size: 30px;
+            }
+
+            .story-intro h2 {
+                font-size: 26px;
+            }
+
+            .value-card {
+                padding: 30px 22px;
+            }
+
+        }
+
+
+        /* ==============================
+           REDUCED MOTION
+        ============================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            .reveal-enabled .reveal,
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
+            .value-card {
+                transition: none;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ==============================
+         NAVBAR
+    ============================== -->
+
+    <header>
+
+        <nav class="navbar" aria-label="Main navigation">
+
+            <a href="home.html" class="logo" aria-label="LUMERA homepage">
+                <img src="logo.png" alt="LUMERA Logo">
+            </a>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="home.html">HOME</a>
+                </li>
+
+                <li>
+                    <a href="shop.html">SHOP</a>
+                </li>
+
+                <li>
+                    <a href="story.html" class="active" aria-current="page">
+                        OUR STORY
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">CONTACT</a>
+                </li>
+
+            </ul>
+
+            <div class="nav-actions">
+
+                <a href="wishlist.html">
+                    WISHLIST
+                    <span class="wishlist-count" aria-label="Wishlist item count">0</span>
+                </a>
+
+                <a href="cart.html">
+                    CART
+                    <span class="cart-count" aria-label="Cart item count">0</span>
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ==============================
+         MAIN CONTENT
+    ============================== -->
+
+    <main>
+
+
+        <!-- STORY HERO -->
+
+        <section class="story-hero">
+
+            <div class="small-heading reveal">
+                THE STORY BEHIND THE FRAGRANCE
+            </div>
+
+            <h1 class="reveal">
+                OUR STORY
+            </h1>
+
+            <p class="reveal">
+                Every fragrance carries an identity.
+                Every brand begins with an idea.
+                LUMERA brings the two together through
+                a vision built around light, quality, and trust.
+            </p>
+
+        </section>
+
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="story-intro">
+
+            <div class="section-label reveal">
+                THE BEGINNING
+            </div>
+
+            <h2 class="reveal">
+                More Than A Fragrance.
+                A Reflection Of Identity.
+            </h2>
+
+            <p class="reveal">
+                LUMERA was created with a simple vision:
+                to make a premium fragrance experience more accessible
+                without compromising the standards behind it.
+
+                We believe fragrance is more than something you wear.
+                It can express personality, reflect a mood,
+                and become part of the way people remember you.
+
+                That belief is at the heart of everything we create.
+            </p>
+
+        </section>
+
+
+
+        <!-- MEANING BEHIND LUMERA -->
+
+        <section class="meaning-section">
+
+            <div class="meaning-content reveal">
+
+                <div class="section-label">
+                    THE MEANING
+                </div>
+
+                <h2>
+                    An Era<br>
+                    Of Light.
+                </h2>
+
+                <p>
+                    The name LUMERA represents a new beginning,
+                    inspired by the idea of light and the
+                    possibilities of a new era.
+                </p>
+
+                <div class="meaning-parts">
+
+                    <div class="meaning-part">
+
+                        <h3>LUM</h3>
+
+                        <p>
+                            Inspired by the French word
+                            "Lumière", representing light,
+                            radiance, and illumination.
+                        </p>
+
+                    </div>
+
+
+                    <div class="meaning-part">
+
+                        <h3>ERA</h3>
+
+                        <p>
+                            Representing a period, a chapter,
+                            or the beginning of something new.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- OUR PHILOSOPHY -->
+
+        <section class="philosophy-section">
+
+            <div class="section-label reveal">
+                WHAT DEFINES US
+            </div>
+
+            <h2 class="reveal">
+                Our Philosophy
+            </h2>
+
+            <p class="philosophy-intro reveal">
+                LUMERA is built on three principles.
+                They are not simply promises written on a page.
+                They are the standards that guide our decisions.
+            </p>
+
+
+            <div class="values-grid">
+
+
+                <div class="value-card reveal">
+
+                    <div class="value-number">
+                        01
+                    </div>
+
+                    <h3>Consistency In Scent</h3>
+
+                    <p>
+                        Every fragrance should deliver a dependable
+                        experience. We value careful formulation,
+                        quality checks, and consistency in the
+                        fragrances we offer.
+                    </p>
+
+                </div>
+
+
+
+                <div class="value-card reveal">
+
+                    <div class="value-number">
+                        02
+                    </div>
+
+                    <h3>Customer Trust</h3>
+
+                    <p>
+                        Trust is earned through honesty,
+                        transparency, and responsibility.
+                        We believe customers deserve clear
+                        information and a brand that values
+                        their experience.
+                    </p>
+
+                </div>
+
+
+
+                <div class="value-card reveal">
+
+                    <div class="value-number">
+                        03
+                    </div>
+
+                    <h3>Affordable Luxury</h3>
+
+                    <p>
+                        A premium fragrance experience should
+                        be more accessible. Our goal is to
+                        balance quality and value without
+                        treating affordability as a reason
+                        to compromise standards.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- OUR APPROACH -->
+
+        <section class="approach-section">
+
+            <div class="section-label reveal">
+                OUR APPROACH
+            </div>
+
+            <h2 class="reveal">
+                Thought Behind Every Detail.
+            </h2>
+
+            <p class="reveal">
+                We believe a fragrance deserves more than
+                a name and a bottle. It deserves attention
+                to formulation, quality, and the experience
+                it creates.
+
+                From selecting fragrance materials to
+                evaluating consistency, every detail matters.
+                We also believe in communicating clearly
+                about our products so customers can make
+                informed choices.
+            </p>
+
+            <div class="approach-divider reveal"></div>
+
+            <div class="approach-highlight reveal">
+                Quality is not an extra.
+                It is part of the experience.
+            </div>
+
+        </section>
+
+
+
+        <!-- OUR PROMISE -->
+
+        <section class="promise-section">
+
+            <div class="section-label reveal">
+                THE LUMERA PROMISE
+            </div>
+
+            <h2 class="reveal">
+                Luxury With Purpose.
+            </h2>
+
+            <p class="reveal">
+                We aim to bring together thoughtful fragrances,
+                dependable quality, and accessible pricing.
+
+                Because we believe that a premium experience
+                should not be defined by price alone.
+
+                At LUMERA, every decision begins with the
+                same question: does it reflect the standards
+                and trust our brand stands for?
+            </p>
+
+            <a href="shop.html" class="reveal">
+                DISCOVER OUR FRAGRANCES
+            </a>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+
+    <footer>
+
+        <div class="footer-content">
+
+
+            <div class="footer-brand">
+
+                <a href="home.html" aria-label="LUMERA homepage">
+                    <img src="logo.png" alt="LUMERA Logo">
+                </a>
+
+                <p>LUMERA — AN ERA OF LIGHT</p>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h3>EXPLORE</h3>
+
+                <a href="home.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="story.html">Our Story</a>
+                <a href="contact.html">Contact</a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h3>CUSTOMER CARE</h3>
+
+                <p>
+                    Have a question or need assistance?
+                    We're here to help you.
+                </p>
+
+                <a href="contact.html">GET IN TOUCH</a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 LUMERA. ALL RIGHTS RESERVED.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- ==============================
+         JAVASCRIPT
+    ============================== -->
+
+    <script>
+
+        /* ==============================
+           CART AND WISHLIST COUNTERS
+        ============================== */
+
+        function readLocalStorage(key) {
+
+            try {
+
+                const savedData = localStorage.getItem(key);
+
+                return savedData ? JSON.parse(savedData) : [];
+
+            } catch (error) {
+
+                console.error("Could not read " + key, error);
+
+                return [];
+
+            }
+
+        }
+
+
+        function updateNavigationCounts() {
+
+            const wishlist = readLocalStorage("lumeraWishlist");
+            const cart = readLocalStorage("lumeraCart");
+
+            const wishlistCount = Array.isArray(wishlist)
+                ? wishlist.length
+                : 0;
+
+            const cartCount = Array.isArray(cart)
+                ? cart.reduce((total, item) => {
+                    return total + (Number(item.quantity) || 0);
+                }, 0)
+                : 0;
+
+
+            document.querySelectorAll(".wishlist-count").forEach((element) => {
+                element.textContent = wishlistCount;
+            });
+
+
+            document.querySelectorAll(".cart-count").forEach((element) => {
+                element.textContent = cartCount;
+            });
+
+        }
+
+
+        // Update counters when the page loads.
+
+        updateNavigationCounts();
+
+
+        // Update counters when another tab changes localStorage.
+
+        window.addEventListener("storage", updateNavigationCounts);
+
+
+        // Refresh counters when returning to this page.
+
+        window.addEventListener("pageshow", updateNavigationCounts);
+
+
+
+        /* ==============================
+           SCROLL REVEAL ANIMATION
+        ============================== */
+
+        const revealElements = document.querySelectorAll(".reveal");
+
+        const reducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+
+        if ("IntersectionObserver" in window && !reducedMotion) {
+
+            document.body.classList.add("reveal-enabled");
+
+            const observer = new IntersectionObserver((entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("active");
+
+                        observer.unobserve(entry.target);
+
+                    }
+
+                });
+
+            }, {
+                threshold: 0.12
+            });
+
+
+            revealElements.forEach((element) => {
+
+                observer.observe(element);
+
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>

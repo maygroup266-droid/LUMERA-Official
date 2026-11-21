@@ -1,0 +1,1531 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the LUMERA fragrance collection. Discover six distinctive fragrances in different sizes.">
+    <title>Shop | LUMERA — An Era of Light</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            width: 100%;
+            min-width: 320px;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #292929;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 50px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eeeeee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo img {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 1px solid #a88955;
+            padding: 5px;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #222222;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active,
+        .nav-actions a:hover {
+            color: #a88955;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .nav-actions a {
+            color: #222222;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 19px;
+            height: 19px;
+            padding: 0 5px;
+            margin-left: 3px;
+            border-radius: 50%;
+            background: #a88955;
+            color: white;
+            font-size: 10px;
+        }
+
+        /* SHOP HERO */
+        .shop-hero {
+            background-color: #EAE3D7;
+            text-align: center;
+            padding: 95px 25px;
+        }
+
+        .shop-label {
+            color: #927344;
+            font-size: 11px;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+
+        .shop-heading {
+            font-size: 36px;
+            font-weight: normal;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+
+        .shop-description {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #665F55;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        /* SHOP SECTION */
+        .shop-section {
+            padding: 80px 50px;
+            background-color: #ffffff;
+        }
+
+        .shop-section-heading {
+            text-align: center;
+            font-size: 25px;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .shop-section-description {
+            text-align: center;
+            color: #777777;
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 50px;
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 50px 25px;
+            max-width: 1050px;
+            width: 100%;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .shop-card {
+            width: 100%;
+            min-width: 0;
+            text-align: center;
+            padding-bottom: 4px;
+        }
+
+        /* PRODUCT IMAGE CONTAINER */
+        .shop-image {
+            width: 100%;
+            height: 390px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #f5f1e9, #e9dfcf);
+            margin-bottom: 22px;
+            transition: background 0.4s ease;
+            overflow: hidden;
+        }
+
+        .shop-card:hover .shop-image {
+            background: linear-gradient(145deg, #e9dfcf, #d8c8ad);
+        }
+
+        .shop-image span {
+            color: #a88955;
+            font-size: 15px;
+            letter-spacing: 3px;
+        }
+
+        /* PRODUCT IMAGES */
+        .shop-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            padding: 0;
+            display: block;
+        }
+
+        .image-note {
+            color: #927344;
+            font-size: 11px;
+            line-height: 1.6;
+            margin: -10px 0 16px;
+            font-style: italic;
+        }
+
+        .shop-category {
+            color: #a88955;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .shop-product-name {
+            font-size: 19px;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .product-size {
+            color: #927344;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            color: #292929;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .shop-product-description {
+            color: #777777;
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        /* PRODUCT BUTTONS */
+        .product-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .shop-button {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #a88955;
+            color: #ffffff;
+            font-size: 10px;
+            letter-spacing: 1.3px;
+            padding: 13px 20px;
+            border: 1px solid #a88955;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .shop-button:hover {
+            background-color: #70552f;
+            border-color: #70552f;
+            transform: translateY(-3px);
+        }
+
+        .add-cart-button {
+            background: transparent;
+            color: #927344;
+        }
+
+        .add-cart-button:hover {
+            background: #f5f1e9;
+            color: #70552f;
+            border-color: #70552f;
+        }
+
+        .wishlist-button {
+            background: transparent;
+            color: #927344;
+            min-width: 44px;
+            font-size: 17px;
+            padding: 9px 13px;
+            letter-spacing: 0;
+        }
+
+        .wishlist-button:hover {
+            background: #f5f1e9;
+            color: #70552f;
+            border-color: #70552f;
+        }
+
+        .wishlist-button.saved {
+            color: #a34e4e;
+            background: #f7eeee;
+            border-color: #a34e4e;
+        }
+
+        .cart-feedback,
+        .wishlist-feedback {
+            min-height: 16px;
+            margin-top: 12px;
+            font-size: 11px;
+        }
+
+        .cart-feedback {
+            color: #927344;
+        }
+
+        .wishlist-feedback {
+            color: #a34e4e;
+            margin-top: 5px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: #242321;
+            color: #ffffff;
+            padding: 65px 50px 25px;
+        }
+
+        .footer-container {
+            max-width: 1150px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 50px;
+        }
+
+        .footer-brand img {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 1px solid #a88955;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+
+        .footer-tagline {
+            color: #c9b99f;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+        }
+
+        .footer-description {
+            color: #aaa69f;
+            font-size: 13px;
+            line-height: 1.9;
+            max-width: 280px;
+        }
+
+        .footer-heading {
+            color: #c5a46c;
+            font-size: 12px;
+            letter-spacing: 2px;
+            font-weight: normal;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: #c7c4be;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover,
+        .footer-contact-link:hover {
+            color: #ffffff;
+        }
+
+        .footer-contact-text {
+            color: #aaa69f;
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-contact-link {
+            display: inline-block;
+            color: #c5a46c;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid #a88955;
+            padding-bottom: 6px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding-top: 25px;
+            border-top: 1px solid #494640;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #96918a;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        /* SCROLL REVEAL */
+        .reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-enabled .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal-enabled .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* REDUCED MOTION */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal,
+            .reveal-enabled .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* TABLET */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 20px;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-actions {
+                gap: 12px;
+            }
+
+            .shop-section {
+                padding: 60px 25px;
+            }
+
+            .shop-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 35px 18px;
+            }
+
+            .shop-image {
+                height: 300px;
+            }
+
+            .footer {
+                padding: 55px 30px 25px;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 480px) {
+            .navbar {
+                justify-content: center;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-actions {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .shop-hero {
+                padding: 65px 18px;
+            }
+
+            .shop-heading {
+                font-size: 27px;
+                line-height: 1.4;
+            }
+
+            .shop-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .shop-image {
+                height: auto;
+                min-height: 0;
+                aspect-ratio: 1.05 / 1;
+            }
+
+            .shop-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                padding: 0;
+            }
+
+            .product-actions {
+                gap: 8px;
+            }
+
+            .shop-button {
+                padding: 12px 14px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer {
+                padding: 50px 25px 25px;
+            }
+        }
+
+        /* SMALL MOBILE */
+        @media (max-width: 360px) {
+            .navbar {
+                padding: 12px 10px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a,
+            .nav-actions a {
+                font-size: 12px;
+            }
+
+            .shop-section {
+                padding: 45px 15px;
+            }
+
+            .shop-image {
+                aspect-ratio: 1.05 / 1;
+            }
+
+            .shop-button {
+                padding: 11px 10px;
+                font-size: 9px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+
+            <a href="home.html" class="logo" aria-label="LUMERA Home">
+                <img src="logo.png" alt="LUMERA">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="shop.html" class="active" aria-current="page">Shop</a></li>
+                <li><a href="story.html">Our Story</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="wishlist.html">
+                    Wishlist <span class="wishlist-count">0</span>
+                </a>
+
+                <a href="cart.html">
+                    Cart <span class="cart-count">0</span>
+                </a>
+            </div>
+
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <section class="shop-hero">
+            <p class="shop-label">THE WORLD OF LUMERA</p>
+
+            <h1 class="shop-heading">Explore Our Fragrances</h1>
+
+            <p class="shop-description">
+                Discover fragrances created to express
+                individuality, character and emotion.
+                Find the scent that speaks to you.
+            </p>
+        </section>
+
+        <section class="shop-section">
+
+            <h2 class="shop-section-heading">THE COLLECTION</h2>
+
+            <p class="shop-section-description">
+                Six fragrances. Six expressions. One identity.
+            </p>
+
+            <div class="shop-grid" id="shop-grid"></div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <a href="home.html" aria-label="LUMERA Home">
+                    <img src="logo.png" alt="LUMERA Logo">
+                </a>
+
+                <p class="footer-tagline">
+                    LUMERA — AN ERA OF LIGHT
+                </p>
+
+                <p class="footer-description">
+                    Discover a world of fragrance where
+                    individuality meets elegance.
+                    Experience affordable luxury through
+                    scents created to express identity.
+                </p>
+
+            </div>
+
+            <div>
+                <h3 class="footer-heading">EXPLORE</h3>
+
+                <ul class="footer-links">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="story.html">Our Story</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer-heading">CUSTOMER CARE</h3>
+
+                <p class="footer-contact-text">
+                    Have a question about our fragrances
+                    or need assistance? We'd be happy to
+                    hear from you.
+                </p>
+
+                <a href="contact.html" class="footer-contact-link">
+                    GET IN TOUCH
+                </a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 LUMERA. ALL RIGHTS RESERVED.</p>
+        </div>
+
+    </footer>
+
+    <!-- PRODUCT, CART AND WISHLIST JAVASCRIPT -->
+    <script>
+
+        /* PRODUCT INFORMATION AND PRICES */
+        const fragrances = [
+            {
+                name: "DUSK",
+                category: "UNISEX",
+                description: "Woody · Warm · Evening",
+                prices: {
+                    "50 ML": 3899,
+                    "30 ML": 2899,
+                    "15 ML": 1499,
+                    "10 ML": 850
+                }
+            },
+
+            {
+                name: "AMBER CLOUD",
+                category: "UNISEX",
+                description: "Woody",
+                prices: {
+                    "50 ML": 3199,
+                    "30 ML": 2299,
+                    "15 ML": 1299,
+                    "10 ML": 750
+                }
+            },
+
+            {
+                name: "UNTAMED",
+                category: "MEN",
+                description: "Fresh · Aquatic",
+                prices: {
+                    "50 ML": 3399,
+                    "30 ML": 2499,
+                    "15 ML": 1269,
+                    "10 ML": 799
+                }
+            },
+
+            {
+                name: "ELARA",
+                category: "WOMEN",
+                description: "Soft · Choco-Floral",
+                prices: {
+                    "50 ML": 3999,
+                    "30 ML": 2699,
+                    "15 ML": 1550,
+                    "10 ML": 1050
+                }
+            },
+
+            {
+                name: "BLUE ECLIPSE",
+                category: "MEN",
+                description: "Fresh · Bold · Aquatic",
+                prices: {
+                    "50 ML": 3599,
+                    "30 ML": 2599,
+                    "15 ML": 1450,
+                    "10 ML": 840
+                }
+            },
+
+            {
+                name: "UNVEILED",
+                category: "WOMEN",
+                description: "Light · Creamy",
+                prices: {
+                    "50 ML": 3799,
+                    "30 ML": 2699,
+                    "15 ML": 1350,
+                    "10 ML": 900
+                }
+            }
+        ];
+
+        const sizes = ["50 ML", "30 ML", "15 ML", "10 ML"];
+
+        const shopGrid = document.getElementById("shop-grid");
+
+        const CART_STORAGE_KEY = "lumeraCart";
+        const WISHLIST_STORAGE_KEY = "lumeraWishlist";
+
+        /* IMAGE FILES */
+        const fragranceImages = {
+            "DUSK": "DUSK.png",
+            "AMBER CLOUD": "AMBER CLOUD.png",
+            "UNTAMED": "UNTAMED.png",
+            "ELARA": "ELARA.png",
+            "BLUE ECLIPSE": "BLUE ECLIPSE.png",
+            "UNVEILED": "UNVEILED.png"
+        };
+
+        const categoryImages = {
+            "15 ML": {
+                "WOMEN": "PINK.png",
+                "MEN": "BLUE.png",
+                "UNISEX": "BROWN.png"
+            },
+
+            "10 ML": {
+                "WOMEN": "pink-10.png",
+                "MEN": "blue-10.png",
+                "UNISEX": "brown-10.png"
+            }
+        };
+
+        /* CREATE ELEMENT */
+        function createElement(tag, className, text) {
+
+            const element = document.createElement(tag);
+
+            if (className) {
+                element.className = className;
+            }
+
+            if (text !== undefined) {
+                element.textContent = text;
+            }
+
+            return element;
+        }
+
+        /* PRICE FORMAT */
+        function formatPrice(price) {
+
+            if (price === null || price === undefined) {
+                return "Price to be confirmed";
+            }
+
+            return "Rs. " + Number(price).toLocaleString("en-PK");
+        }
+
+        /* GET PRODUCT PRICE */
+        function getProductPrice(name, size) {
+
+            const fragrance = fragrances.find(
+                item => item.name === name
+            );
+
+            if (!fragrance) {
+                return null;
+            }
+
+            return fragrance.prices[size] ?? null;
+        }
+
+        /* GET PRODUCT IMAGE */
+        function getProductImage(fragrance, size) {
+
+            if (size === "50 ML" || size === "30 ML") {
+                return fragranceImages[fragrance.name];
+            }
+
+            if (categoryImages[size]) {
+                return categoryImages[size][fragrance.category];
+            }
+
+            return null;
+        }
+
+        /* GENERATE PRODUCT CARDS */
+        fragrances.forEach((fragrance) => {
+
+            sizes.forEach((size) => {
+
+                const sizeCode = size.replace(" ML", "");
+
+                const productId =
+                    fragrance.name.toLowerCase().replace(/\s+/g, "-")
+                    + "-"
+                    + sizeCode;
+
+                const price = fragrance.prices[size];
+
+                const card = createElement("article", "shop-card reveal");
+
+                card.dataset.id = productId;
+                card.dataset.name = fragrance.name;
+                card.dataset.category = fragrance.category;
+                card.dataset.size = size;
+                card.dataset.price = price;
+
+                /* PRODUCT IMAGE */
+                const image = createElement("div", "shop-image");
+
+                const imageFile = getProductImage(fragrance, size);
+
+                if (imageFile) {
+
+                    const productImage = createElement("img");
+
+                    productImage.src = imageFile;
+                    productImage.alt =
+                        fragrance.name + " " + size + " perfume";
+
+                    productImage.loading = "lazy";
+
+                    productImage.onerror = () => {
+
+                        image.replaceChildren(
+                            createElement("span", "", fragrance.name)
+                        );
+
+                    };
+
+                    image.appendChild(productImage);
+
+                } else {
+
+                    image.appendChild(
+                        createElement("span", "", fragrance.name)
+                    );
+
+                }
+
+                /* 30 ML IMAGE NOTICE */
+                const imageNote = size === "30 ML"
+                    ? createElement(
+                        "p",
+                        "image-note",
+                        "Image shown is representative. Actual 30ml packaging may vary."
+                    )
+                    : null;
+
+                const category = createElement(
+                    "p",
+                    "shop-category",
+                    fragrance.category
+                );
+
+                const name = createElement(
+                    "h3",
+                    "shop-product-name",
+                    fragrance.name
+                );
+
+                const productSize = createElement(
+                    "p",
+                    "product-size",
+                    size
+                );
+
+                const productPrice = createElement(
+                    "p",
+                    "product-price",
+                    formatPrice(price)
+                );
+
+                const description = createElement(
+                    "p",
+                    "shop-product-description",
+                    fragrance.description
+                );
+
+                const actions = createElement(
+                    "div",
+                    "product-actions"
+                );
+
+                const cartButton = createElement(
+                    "button",
+                    "shop-button add-cart-button",
+                    "ADD TO CART"
+                );
+
+                cartButton.type = "button";
+
+                const buyButton = createElement(
+                    "a",
+                    "shop-button buy-now-button",
+                    "BUY NOW"
+                );
+
+                buyButton.target = "_blank";
+                buyButton.rel = "noopener noreferrer";
+
+                const wishlistButton = createElement(
+                    "button",
+                    "shop-button wishlist-button",
+                    "♡"
+                );
+
+                wishlistButton.type = "button";
+
+                wishlistButton.setAttribute(
+                    "aria-label",
+                    "Add to wishlist"
+                );
+
+                wishlistButton.setAttribute(
+                    "aria-pressed",
+                    "false"
+                );
+
+                wishlistButton.title = "Add to wishlist";
+
+                actions.appendChild(cartButton);
+                actions.appendChild(buyButton);
+                actions.appendChild(wishlistButton);
+
+                const cartFeedback = createElement(
+                    "p",
+                    "cart-feedback"
+                );
+
+                cartFeedback.setAttribute(
+                    "aria-live",
+                    "polite"
+                );
+
+                const wishlistFeedback = createElement(
+                    "p",
+                    "wishlist-feedback"
+                );
+
+                wishlistFeedback.setAttribute(
+                    "aria-live",
+                    "polite"
+                );
+
+                card.appendChild(image);
+
+                if (imageNote) {
+                    card.appendChild(imageNote);
+                }
+
+                card.appendChild(category);
+                card.appendChild(name);
+                card.appendChild(productSize);
+                card.appendChild(productPrice);
+                card.appendChild(description);
+                card.appendChild(actions);
+                card.appendChild(cartFeedback);
+                card.appendChild(wishlistFeedback);
+
+                shopGrid.appendChild(card);
+
+            });
+
+        });
+
+        /* GET CART */
+        function getCart() {
+
+            try {
+
+                const savedCart = JSON.parse(
+                    localStorage.getItem(CART_STORAGE_KEY)
+                );
+
+                return Array.isArray(savedCart) ? savedCart : [];
+
+            } catch (error) {
+
+                return [];
+
+            }
+        }
+
+        /* SAVE CART */
+        function saveCart(cart) {
+
+            try {
+
+                localStorage.setItem(
+                    CART_STORAGE_KEY,
+                    JSON.stringify(cart)
+                );
+
+                updateCartCount();
+
+                return true;
+
+            } catch (error) {
+
+                alert(
+                    "Unable to update your cart. Please check your browser storage settings."
+                );
+
+                return false;
+
+            }
+        }
+
+        /* GET WISHLIST */
+        function getWishlist() {
+
+            try {
+
+                const savedWishlist = JSON.parse(
+                    localStorage.getItem(WISHLIST_STORAGE_KEY)
+                );
+
+                return Array.isArray(savedWishlist)
+                    ? savedWishlist
+                    : [];
+
+            } catch (error) {
+
+                return [];
+
+            }
+        }
+
+        /* SAVE WISHLIST */
+        function saveWishlist(wishlist) {
+
+            try {
+
+                localStorage.setItem(
+                    WISHLIST_STORAGE_KEY,
+                    JSON.stringify(wishlist)
+                );
+
+                updateWishlistCount();
+
+                return true;
+
+            } catch (error) {
+
+                alert(
+                    "Unable to update your wishlist. Please check your browser storage settings."
+                );
+
+                return false;
+
+            }
+        }
+
+        /* REFRESH SAVED CART PRICES */
+        function refreshCartPrices() {
+
+            const cart = getCart();
+            let changed = false;
+
+            cart.forEach((item) => {
+
+                const currentPrice = getProductPrice(
+                    item.name,
+                    item.size
+                );
+
+                if (
+                    currentPrice !== null &&
+                    item.price !== currentPrice
+                ) {
+
+                    item.price = currentPrice;
+                    changed = true;
+
+                }
+
+            });
+
+            if (changed) {
+                saveCart(cart);
+            }
+        }
+
+        /* REFRESH SAVED WISHLIST PRICES */
+        function refreshWishlistPrices() {
+
+            const wishlist = getWishlist();
+            let changed = false;
+
+            wishlist.forEach((item) => {
+
+                const currentPrice = getProductPrice(
+                    item.name,
+                    item.size
+                );
+
+                if (
+                    currentPrice !== null &&
+                    item.price !== currentPrice
+                ) {
+
+                    item.price = currentPrice;
+                    changed = true;
+
+                }
+
+            });
+
+            if (changed) {
+                saveWishlist(wishlist);
+            }
+        }
+
+        /* UPDATE CART COUNTER */
+        function updateCartCount() {
+
+            const cart = getCart();
+
+            const totalItems = cart.reduce((sum, item) => {
+
+                return sum + (Number(item.quantity) || 0);
+
+            }, 0);
+
+            document.querySelectorAll(".cart-count").forEach(
+                (counter) => {
+
+                    counter.textContent = totalItems;
+
+                }
+            );
+        }
+
+        /* UPDATE WISHLIST COUNTER */
+        function updateWishlistCount() {
+
+            const wishlist = getWishlist();
+
+            document.querySelectorAll(".wishlist-count").forEach(
+                (counter) => {
+
+                    counter.textContent = wishlist.length;
+
+                }
+            );
+        }
+
+        /* UPDATE WISHLIST BUTTONS */
+        function updateWishlistButtons() {
+
+            const wishlist = getWishlist();
+
+            document.querySelectorAll(".shop-card").forEach(
+                (card) => {
+
+                    const button = card.querySelector(
+                        ".wishlist-button"
+                    );
+
+                    const isSaved = wishlist.some((item) => {
+
+                        return item.id === card.dataset.id;
+
+                    });
+
+                    button.classList.toggle("saved", isSaved);
+
+                    button.textContent = isSaved ? "♥" : "♡";
+
+                    button.setAttribute(
+                        "aria-pressed",
+                        isSaved ? "true" : "false"
+                    );
+
+                    button.setAttribute(
+                        "aria-label",
+                        isSaved
+                            ? "Remove from wishlist"
+                            : "Add to wishlist"
+                    );
+
+                    button.title = isSaved
+                        ? "Remove from wishlist"
+                        : "Add to wishlist";
+
+                }
+            );
+        }
+
+        /* ADD TO CART */
+        document.querySelectorAll(".shop-card").forEach(
+            (card) => {
+
+                const button = card.querySelector(
+                    ".add-cart-button"
+                );
+
+                const feedback = card.querySelector(
+                    ".cart-feedback"
+                );
+
+                button.addEventListener("click", () => {
+
+                    const product = {
+                        id: card.dataset.id,
+                        name: card.dataset.name,
+                        category: card.dataset.category,
+                        size: card.dataset.size,
+                        price: Number(card.dataset.price),
+                        quantity: 1
+                    };
+
+                    const cart = getCart();
+
+                    const existingItem = cart.find((item) => {
+
+                        return item.id === product.id;
+
+                    });
+
+                    if (existingItem) {
+
+                        existingItem.quantity =
+                            (Number(existingItem.quantity) || 0) + 1;
+
+                        existingItem.price = product.price;
+                        existingItem.name = product.name;
+                        existingItem.category = product.category;
+                        existingItem.size = product.size;
+
+                    } else {
+
+                        cart.push(product);
+
+                    }
+
+                    const saved = saveCart(cart);
+
+                    if (saved) {
+
+                        feedback.textContent =
+                            "Added to your cart successfully!";
+
+                        button.textContent = "ADDED ✓";
+
+                        setTimeout(() => {
+
+                            button.textContent = "ADD TO CART";
+                            feedback.textContent = "";
+
+                        }, 1800);
+
+                    }
+
+                });
+
+            }
+        );
+
+        /* ADD OR REMOVE FROM WISHLIST */
+        document.querySelectorAll(".shop-card").forEach(
+            (card) => {
+
+                const button = card.querySelector(
+                    ".wishlist-button"
+                );
+
+                const feedback = card.querySelector(
+                    ".wishlist-feedback"
+                );
+
+                button.addEventListener("click", () => {
+
+                    const product = {
+                        id: card.dataset.id,
+                        name: card.dataset.name,
+                        category: card.dataset.category,
+                        size: card.dataset.size,
+                        price: Number(card.dataset.price)
+                    };
+
+                    let wishlist = getWishlist();
+
+                    const alreadySaved = wishlist.some((item) => {
+
+                        return item.id === product.id;
+
+                    });
+
+                    if (alreadySaved) {
+
+                        wishlist = wishlist.filter((item) => {
+
+                            return item.id !== product.id;
+
+                        });
+
+                    } else {
+
+                        wishlist.push(product);
+
+                    }
+
+                    const saved = saveWishlist(wishlist);
+
+                    if (saved) {
+
+                        feedback.textContent = alreadySaved
+                            ? "Removed from your wishlist."
+                            : "Saved to your wishlist!";
+
+                        updateWishlistButtons();
+
+                        setTimeout(() => {
+
+                            feedback.textContent = "";
+
+                        }, 1800);
+
+                    }
+
+                });
+
+            }
+        );
+
+        /* BUY NOW - WHATSAPP */
+        document.querySelectorAll(".shop-card").forEach(
+            (card) => {
+
+                const buyButton = card.querySelector(
+                    ".buy-now-button"
+                );
+
+                const productName = card.dataset.name;
+                const productSize = card.dataset.size;
+                const productPrice = Number(card.dataset.price);
+
+                const priceText = formatPrice(productPrice);
+
+                const message =
+                    `Hello LUMERA! I would like to order ${productName} (${productSize}). The listed price is ${priceText}. Please confirm availability and delivery details.`;
+
+                buyButton.href =
+                    "https://wa.me/923334554075?text="
+                    + encodeURIComponent(message);
+
+            }
+        );
+
+        /* INITIAL COUNTERS, PRICES AND HEARTS */
+        refreshCartPrices();
+        refreshWishlistPrices();
+
+        updateCartCount();
+        updateWishlistCount();
+        updateWishlistButtons();
+
+        /* REFRESH WHEN PAGE IS RESTORED */
+        window.addEventListener("pageshow", () => {
+
+            refreshCartPrices();
+            refreshWishlistPrices();
+
+            updateCartCount();
+            updateWishlistCount();
+            updateWishlistButtons();
+
+        });
+
+        /* SYNC BETWEEN TABS */
+        window.addEventListener("storage", (event) => {
+
+            if (
+                event.key === CART_STORAGE_KEY ||
+                event.key === null
+            ) {
+
+                refreshCartPrices();
+                updateCartCount();
+
+            }
+
+            if (
+                event.key === WISHLIST_STORAGE_KEY ||
+                event.key === null
+            ) {
+
+                refreshWishlistPrices();
+                updateWishlistCount();
+                updateWishlistButtons();
+
+            }
+
+        });
+
+        /* SCROLL REVEAL ANIMATION */
+        const revealElements = document.querySelectorAll(
+            ".shop-card"
+        );
+
+        if (
+            "IntersectionObserver" in window &&
+            !window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches
+        ) {
+
+            document.documentElement.classList.add(
+                "reveal-enabled"
+            );
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach((entry) => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("show");
+
+                            observer.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+            revealElements.forEach((element) => {
+
+                observer.observe(element);
+
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>

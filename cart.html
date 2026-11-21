@@ -1,0 +1,1911 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Review your selected LUMERA fragrances and prepare your order.">
+
+    <title>Your Cart | LUMERA — An Era of Light</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            width: 100%;
+            min-width: 320px;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #F8F6F1;
+            color: #292929;
+        }
+
+        button, input, textarea {
+            font: inherit;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 12px 50px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .logo img {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 1px solid #a88955;
+            padding: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #222222;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-actions a:hover {
+            color: #a88955;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .nav-actions a {
+            text-decoration: none;
+            color: #222222;
+            font-size: 13px;
+        }
+
+        .nav-actions a.active {
+            color: #a88955;
+            font-weight: bold;
+        }
+
+        .wishlist-count,
+        .cart-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 19px;
+            height: 19px;
+            padding: 0 5px;
+            margin-left: 3px;
+            border-radius: 50%;
+            background: #a88955;
+            color: white;
+            font-size: 10px;
+        }
+
+        /* HERO */
+
+        .cart-hero {
+            background-color: #EAE3D7;
+            text-align: center;
+            padding: 75px 25px;
+        }
+
+        .cart-label {
+            color: #927344;
+            font-size: 11px;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+
+        .cart-heading {
+            font-family: Georgia, serif;
+            font-size: 42px;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .cart-description {
+            color: #665F55;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* CART LAYOUT */
+
+        .cart-section {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 80px 30px;
+        }
+
+        .cart-container {
+            display: grid;
+            grid-template-columns: 1.7fr 1fr;
+            gap: 45px;
+            align-items: start;
+        }
+
+        .cart-items {
+            min-width: 0;
+            background-color: #ffffff;
+            padding: 35px;
+        }
+
+        .section-heading {
+            font-family: Georgia, serif;
+            font-size: 25px;
+            font-weight: normal;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        /* CART PRODUCT */
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding: 25px 0;
+            border-bottom: 1px solid #e8e2d8;
+        }
+
+        .product-image {
+            width: 115px;
+            height: 125px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #f5f1e9, #e9dfcf);
+            overflow: hidden;
+            padding: 5px;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .product-image span {
+            color: #a88955;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .product-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .product-category {
+            color: #a88955;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .product-name {
+            font-family: Georgia, serif;
+            font-size: 19px;
+            font-weight: normal;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .product-size {
+            color: #777777;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .product-price {
+            font-size: 14px;
+            color: #927344;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .quantity-control button {
+            width: 27px;
+            height: 27px;
+            background-color: #f5f1e9;
+            border: 1px solid #d8c8ad;
+            cursor: pointer;
+            font-size: 15px;
+            color: #292929;
+        }
+
+        .quantity-control button:hover {
+            background-color: #eae3d7;
+        }
+
+        .quantity-control span {
+            font-size: 13px;
+            min-width: 15px;
+            text-align: center;
+        }
+
+        .remove-button {
+            display: inline-block;
+            margin-top: 12px;
+            color: #9b7770;
+            font-size: 11px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .remove-button:hover {
+            color: #6f4038;
+        }
+
+        /* ORDER SUMMARY */
+
+        .cart-summary {
+            min-width: 0;
+            background-color: #EAE3D7;
+            padding: 35px;
+        }
+
+        .summary-heading {
+            font-family: Georgia, serif;
+            font-size: 25px;
+            font-weight: normal;
+            margin-bottom: 30px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            font-size: 13px;
+            color: #665F55;
+            margin-bottom: 20px;
+        }
+
+        .summary-row span:last-child,
+        .total-row strong:last-child {
+            text-align: right;
+            overflow-wrap: anywhere;
+        }
+
+        .pending-row {
+            color: #927344;
+        }
+
+        .summary-divider {
+            border: none;
+            border-top: 1px solid #cfc2ae;
+            margin: 25px 0;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            font-size: 16px;
+            color: #292929;
+            margin-bottom: 30px;
+        }
+
+        /* CUSTOMER DETAILS */
+
+        .customer-heading {
+            font-family: Georgia, serif;
+            font-size: 21px;
+            font-weight: normal;
+            margin: 30px 0 20px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            color: #665F55;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #cfc2ae;
+            background-color: #F8F6F1;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            color: #292929;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #a88955;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 85px;
+        }
+
+        .checkout-button {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background-color: #a88955;
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2px;
+            border: 1px solid #a88955;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-button:hover {
+            background-color: #70552f;
+        }
+
+        .checkout-button:disabled {
+            background-color: #b8aa95;
+            border-color: #b8aa95;
+            cursor: not-allowed;
+        }
+
+        .summary-note {
+            color: #777777;
+            font-size: 11px;
+            line-height: 1.7;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* EMPTY CART */
+
+        .empty-cart {
+            text-align: center;
+            padding: 70px 20px;
+            background-color: #ffffff;
+        }
+
+        .empty-cart h2 {
+            font-family: Georgia, serif;
+            font-weight: normal;
+            font-size: 27px;
+            margin-bottom: 15px;
+        }
+
+        .empty-cart p {
+            color: #777777;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .continue-shopping {
+            display: inline-block;
+            text-decoration: none;
+            color: #a88955;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid #a88955;
+            padding-bottom: 6px;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            background-color: #242321;
+            color: #ffffff;
+            padding: 65px 50px 25px;
+        }
+
+        .footer-container {
+            max-width: 1150px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 50px;
+        }
+
+        .footer-brand img {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 1px solid #a88955;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+
+        .footer-tagline {
+            color: #c9b99f;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+        }
+
+        .footer-description {
+            color: #aaa69f;
+            font-size: 13px;
+            line-height: 1.9;
+            max-width: 280px;
+        }
+
+        .footer-heading {
+            color: #c5a46c;
+            font-size: 12px;
+            letter-spacing: 2px;
+            font-weight: normal;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #c7c4be;
+            font-size: 13px;
+        }
+
+        .footer-links a:hover {
+            color: #c5a46c;
+        }
+
+        .footer-contact-text {
+            color: #aaa69f;
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-contact-link {
+            display: inline-block;
+            color: #c5a46c;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid #a88955;
+            padding-bottom: 6px;
+        }
+
+        .footer-bottom {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding-top: 25px;
+            border-top: 1px solid #494640;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #96918a;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        /* RESPONSIVE DESIGN */
+
+        @media (max-width: 1000px) {
+            .navbar {
+                padding: 12px 25px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .cart-container {
+                gap: 25px;
+            }
+
+            .cart-items,
+            .cart-summary {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .nav-actions {
+                justify-content: center;
+            }
+
+            .cart-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 15px 12px;
+            }
+
+            .logo img {
+                width: 58px;
+                height: 58px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a,
+            .nav-actions a {
+                font-size: 11px;
+            }
+
+            .nav-actions {
+                gap: 15px;
+            }
+
+            .cart-hero {
+                padding: 55px 18px;
+            }
+
+            .cart-heading {
+                font-size: 32px;
+            }
+
+            .cart-description {
+                font-size: 13px;
+            }
+
+            .cart-section {
+                padding: 45px 15px;
+            }
+
+            .cart-items,
+            .cart-summary {
+                padding: 22px;
+            }
+
+            .cart-item {
+                gap: 13px;
+                align-items: flex-start;
+            }
+
+            .product-image {
+                width: 75px;
+                height: 95px;
+            }
+
+            .product-name {
+                font-size: 17px;
+            }
+
+            .product-category {
+                font-size: 9px;
+            }
+
+            .product-size,
+            .product-price {
+                font-size: 12px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer {
+                padding: 50px 25px 25px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .nav-links {
+                gap: 9px;
+            }
+
+            .nav-links a,
+            .nav-actions a {
+                font-size: 10px;
+            }
+
+            .cart-heading {
+                font-size: 28px;
+            }
+
+            .cart-items,
+            .cart-summary {
+                padding: 17px;
+            }
+
+            .cart-item {
+                gap: 10px;
+            }
+
+            .product-image {
+                width: 65px;
+                height: 85px;
+            }
+
+            .product-name {
+                font-size: 15px;
+            }
+
+            .quantity-control {
+                gap: 9px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header>
+        <nav class="navbar">
+
+            <a href="home.html" class="logo" aria-label="LUMERA Home">
+                <img src="logo.png" alt="LUMERA Logo">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="story.html">Our Story</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="wishlist.html">
+                    Wishlist <span class="wishlist-count">0</span>
+                </a>
+
+                <a href="cart.html" class="active" aria-current="page">
+                    Cart <span class="cart-count">0</span>
+                </a>
+            </div>
+
+        </nav>
+    </header>
+
+    <!-- HERO -->
+
+    <section class="cart-hero">
+        <p class="cart-label">YOUR LUMERA SELECTION</p>
+        <h1 class="cart-heading">Your Shopping Cart</h1>
+        <p class="cart-description">
+            Your selected fragrances, gathered in one place.
+        </p>
+    </section>
+
+    <!-- MAIN CART -->
+
+    <main class="cart-section">
+
+        <div class="cart-container" id="cart-container">
+
+            <section class="cart-items">
+                <h2 class="section-heading">Your Items</h2>
+                <div id="cart-items-list"></div>
+            </section>
+
+            <aside class="cart-summary">
+
+                <h2 class="summary-heading">Order Summary</h2>
+
+                <div class="summary-row">
+                    <span>Subtotal (confirmed items)</span>
+                    <span id="cart-subtotal">To be confirmed</span>
+                </div>
+
+                <div class="summary-row pending-row">
+                    <span>Pending item pricing</span>
+                    <span id="pending-pricing">None</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Delivery</span>
+                    <span>To be confirmed</span>
+                </div>
+
+                <hr class="summary-divider">
+
+                <div class="total-row">
+                    <strong>Total</strong>
+                    <strong id="cart-total">To be confirmed</strong>
+                </div>
+
+                <form id="checkout-form">
+
+                    <h3 class="customer-heading">Delivery Details</h3>
+
+                    <div class="form-group">
+                        <label for="customer-name">FULL NAME</label>
+                        <input
+                            type="text"
+                            id="customer-name"
+                            name="customerName"
+                            placeholder="Enter your full name"
+                            required
+                            maxlength="80"
+                            autocomplete="name"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer-phone">PHONE NUMBER</label>
+                        <input
+                            type="tel"
+                            id="customer-phone"
+                            name="customerPhone"
+                            placeholder="e.g. 03XXXXXXXXX"
+                            required
+                            maxlength="20"
+                            autocomplete="tel"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer-city">CITY</label>
+                        <input
+                            type="text"
+                            id="customer-city"
+                            name="customerCity"
+                            placeholder="Enter your city"
+                            required
+                            maxlength="60"
+                            autocomplete="address-level2"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer-address">DELIVERY ADDRESS</label>
+                        <textarea
+                            id="customer-address"
+                            name="customerAddress"
+                            placeholder="Enter your complete delivery address"
+                            required
+                            maxlength="300"
+                            autocomplete="street-address"
+                        ></textarea>
+                    </div>
+
+                    <button
+                        class="checkout-button"
+                        id="checkout-button"
+                        type="submit"
+                    >
+                        PROCEED TO CHECKOUT
+                    </button>
+
+                </form>
+
+                <p class="summary-note">
+                    Final pricing and delivery details will be confirmed
+                    by LUMERA before your order is placed.
+                    Your WhatsApp message will be prepared for your review.
+                </p>
+
+            </aside>
+
+        </div>
+
+        <div class="empty-cart" id="empty-cart" hidden>
+            <h2>Your Cart is Empty</h2>
+            <p>You haven't added any fragrances to your cart yet.</p>
+            <a href="shop.html" class="continue-shopping">
+                CONTINUE SHOPPING
+            </a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <img src="logo.png" alt="LUMERA Logo">
+
+                <p class="footer-tagline">
+                    LUMERA — AN ERA OF LIGHT
+                </p>
+
+                <p class="footer-description">
+                    Discover a world of fragrance where
+                    individuality meets elegance.
+                    Experience affordable luxury through
+                    scents created to express identity.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="footer-heading">EXPLORE</h3>
+
+                <ul class="footer-links">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="story.html">Our Story</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer-heading">CUSTOMER CARE</h3>
+
+                <p class="footer-contact-text">
+                    Have a question about our fragrances
+                    or need assistance? We'd be happy to
+                    hear from you.
+                </p>
+
+                <a href="contact.html" class="footer-contact-link">
+                    GET IN TOUCH
+                </a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 LUMERA. ALL RIGHTS RESERVED.</p>
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        // ==============================
+        // STORAGE KEYS
+        // ==============================
+
+        const CART_STORAGE_KEY = "lumeraCart";
+        const WISHLIST_STORAGE_KEY = "lumeraWishlist";
+        const WHATSAPP_NUMBER = "923334554075";
+
+
+        // ==============================
+        // PRODUCT IMAGE MAPPING
+        // ==============================
+
+        const fragranceImages = {
+
+            "DUSK": "DUSK.png",
+            "AMBER CLOUD": "AMBER CLOUD.png",
+            "UNTAMED": "UNTAMED.png",
+            "ELARA": "ELARA.png",
+            "BLUE ECLIPSE": "BLUE ECLIPSE.png",
+            "UNVEILED": "UNVEILED.png"
+
+        };
+
+
+        const categoryImages = {
+
+            "15 ML": {
+                "WOMEN": "PINK.png",
+                "MEN": "BLUE.png",
+                "UNISEX": "BROWN.png"
+            },
+
+            "10 ML": {
+                "WOMEN": "pink-10.png",
+                "MEN": "blue-10.png",
+                "UNISEX": "brown-10.png"
+            }
+
+        };
+
+
+        // GET THE CORRECT IMAGE FOR EACH PRODUCT
+
+        function getProductImage(item) {
+
+            const name = normalizeProductName(item.name);
+
+            const size = String(item.size || "")
+                .trim()
+                .toUpperCase()
+                .replace(/\s+/g, " ");
+
+            const category = String(item.category || "")
+                .trim()
+                .toUpperCase();
+
+            // 50 ML AND 30 ML
+
+            if (
+                size.includes("50") ||
+                size.includes("30")
+            ) {
+
+                return fragranceImages[name] || "";
+
+            }
+
+
+            // DETERMINE CATEGORY
+
+            let gender = "";
+
+            if (category.includes("WOMEN")) {
+
+                gender = "WOMEN";
+
+            } else if (category.includes("MEN")) {
+
+                gender = "MEN";
+
+            } else if (category.includes("UNISEX")) {
+
+                gender = "UNISEX";
+
+            }
+
+
+            // 15 ML
+
+            if (size.includes("15")) {
+
+                return categoryImages["15 ML"][gender] || "";
+
+            }
+
+
+            // 10 ML
+
+            if (size.includes("10")) {
+
+                return categoryImages["10 ML"][gender] || "";
+
+            }
+
+            return "";
+
+        }
+
+
+        // ==============================
+        // PRODUCT INFORMATION AND PRICES
+        // ==============================
+
+        const PRODUCTS = {
+
+            "DUSK": {
+                category: "UNISEX",
+                description: "WOODY · WARM · EVENING",
+                prices: {
+                    "50": 3899,
+                    "30": 2899,
+                    "15": 1499,
+                    "10": 850
+                }
+            },
+
+            "AMBER CLOUD": {
+                category: "UNISEX",
+                description: "WOODY",
+                prices: {
+                    "50": 3199,
+                    "30": 2299,
+                    "15": 1299,
+                    "10": 750
+                }
+            },
+
+            "UNTAMED": {
+                category: "MEN",
+                description: "FRESH · AQUATIC",
+                prices: {
+                    "50": 3399,
+                    "30": 2499,
+                    "15": 1269,
+                    "10": 799
+                }
+            },
+
+            "ELARA": {
+                category: "WOMEN",
+                description: "SOFT · CHOCO-FLORAL",
+                prices: {
+                    "50": 3999,
+                    "30": 2699,
+                    "15": 1550,
+                    "10": 1050
+                }
+            },
+
+            "BLUE ECLIPSE": {
+                category: "MEN",
+                description: "FRESH · BOLD · AQUATIC",
+                prices: {
+                    "50": 3599,
+                    "30": 2599,
+                    "15": 1450,
+                    "10": 840
+                }
+            },
+
+            "UNVEILED": {
+                category: "WOMEN",
+                description: "LIGHT · CREAMY",
+                prices: {
+                    "50": 3799,
+                    "30": 2699,
+                    "15": 1350,
+                    "10": 900
+                }
+            }
+
+        };
+
+
+        // OLD NAMES FOR PREVIOUSLY SAVED ITEMS
+
+        const OLD_NAMES = {
+            "AMBER WOOD": "AMBER CLOUD",
+            "WITHIN DESIRE": "UNVEILED"
+        };
+
+
+        // ==============================
+        // PAGE ELEMENTS
+        // ==============================
+
+        const cartItemsList = document.getElementById("cart-items-list");
+        const cartContainer = document.getElementById("cart-container");
+        const emptyCart = document.getElementById("empty-cart");
+
+        const subtotalElement = document.getElementById("cart-subtotal");
+        const pendingPricingElement = document.getElementById("pending-pricing");
+        const totalElement = document.getElementById("cart-total");
+
+        const checkoutForm = document.getElementById("checkout-form");
+        const checkoutButton = document.getElementById("checkout-button");
+
+
+        // ==============================
+        // FORMAT PRICE
+        // ==============================
+
+        function formatPrice(price) {
+
+            return "Rs. " + Number(price).toLocaleString("en-PK");
+
+        }
+
+
+        // ==============================
+        // NORMALIZE PRODUCT NAME
+        // ==============================
+
+        function normalizeProductName(name) {
+
+            const cleanedName = String(name || "")
+                .trim()
+                .toUpperCase();
+
+            return OLD_NAMES[cleanedName] || cleanedName;
+
+        }
+
+
+        // ==============================
+        // NORMALIZE SIZE
+        // ==============================
+
+        function normalizeSize(size) {
+
+            const match = String(size || "").match(/\d+/);
+
+            return match ? match[0] : null;
+
+        }
+
+
+        // ==============================
+        // GET OFFICIAL PRICE
+        // ==============================
+
+        function getCorrectPrice(name, size) {
+
+            const productName = normalizeProductName(name);
+            const product = PRODUCTS[productName];
+
+            if (!product) {
+                return null;
+            }
+
+            const normalizedSize = normalizeSize(size);
+
+            if (!normalizedSize) {
+                return null;
+            }
+
+            const price = product.prices[normalizedSize];
+
+            return typeof price === "number" ? price : null;
+
+        }
+
+
+        // ==============================
+        // GET ITEM PRICE
+        // ==============================
+
+        function getItemPrice(item) {
+
+            const officialPrice = getCorrectPrice(
+                item.name,
+                item.size
+            );
+
+            if (officialPrice !== null) {
+                return officialPrice;
+            }
+
+            const savedPrice = Number(item.price);
+
+            if (
+                item.price !== null &&
+                item.price !== "" &&
+                Number.isFinite(savedPrice) &&
+                savedPrice >= 0
+            ) {
+                return savedPrice;
+            }
+
+            return null;
+
+        }
+
+
+        // ==============================
+        // GET CART
+        // ==============================
+
+        function getCart() {
+
+            try {
+
+                const savedCart = JSON.parse(
+                    localStorage.getItem(CART_STORAGE_KEY)
+                );
+
+                return Array.isArray(savedCart) ? savedCart : [];
+
+            } catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+        // ==============================
+        // SAVE CART
+        // ==============================
+
+        function saveCart(cart) {
+
+            localStorage.setItem(
+                CART_STORAGE_KEY,
+                JSON.stringify(cart)
+            );
+
+        }
+
+
+        // ==============================
+        // NORMALIZE CART PRODUCTS
+        // ==============================
+
+        function updateCartProducts(cart) {
+
+            let changed = false;
+
+            const updatedCart = cart.map((item) => {
+
+                const productName = normalizeProductName(item.name);
+                const product = PRODUCTS[productName];
+
+                const correctPrice = getCorrectPrice(
+                    productName,
+                    item.size
+                );
+
+                const correctCategory = product
+                    ? product.category
+                    : (item.category || "COLLECTION");
+
+                if (item.name !== productName) {
+                    item.name = productName;
+                    changed = true;
+                }
+
+                if (item.category !== correctCategory) {
+                    item.category = correctCategory;
+                    changed = true;
+                }
+
+                if (
+                    correctPrice !== null &&
+                    item.price !== correctPrice
+                ) {
+                    item.price = correctPrice;
+                    changed = true;
+                }
+
+                // UPDATE IMAGE INFORMATION
+
+                const correctImage = getProductImage(item);
+
+                if (item.image !== correctImage) {
+                    item.image = correctImage;
+                    changed = true;
+                }
+
+                const quantity = Math.floor(Number(item.quantity));
+
+                if (!Number.isFinite(quantity) || quantity < 1) {
+
+                    item.quantity = 1;
+                    changed = true;
+
+                } else if (item.quantity !== quantity) {
+
+                    item.quantity = quantity;
+                    changed = true;
+
+                }
+
+                return item;
+
+            });
+
+            if (changed) {
+                saveCart(updatedCart);
+            }
+
+            return updatedCart;
+
+        }
+
+
+        // ==============================
+        // UPDATE NAVBAR COUNTS
+        // ==============================
+
+        function updateNavbarCounts(cart) {
+
+            const totalCartItems = cart.reduce((sum, item) => {
+
+                return sum + (Number(item.quantity) || 0);
+
+            }, 0);
+
+            let wishlist = [];
+
+            try {
+
+                const savedWishlist = JSON.parse(
+                    localStorage.getItem(WISHLIST_STORAGE_KEY)
+                );
+
+                wishlist = Array.isArray(savedWishlist)
+                    ? savedWishlist
+                    : [];
+
+            } catch (error) {
+
+                wishlist = [];
+
+            }
+
+            document.querySelectorAll(".cart-count").forEach((counter) => {
+                counter.textContent = totalCartItems;
+            });
+
+            document.querySelectorAll(".wishlist-count").forEach((counter) => {
+                counter.textContent = wishlist.length;
+            });
+
+        }
+
+
+        // ==============================
+        // DISPLAY CART ITEMS
+        // ==============================
+
+        function renderCart() {
+
+            const cart = updateCartProducts(getCart());
+
+            updateNavbarCounts(cart);
+
+            cartItemsList.innerHTML = "";
+
+            if (cart.length === 0) {
+
+                cartContainer.style.display = "none";
+                emptyCart.hidden = false;
+
+                updateSummary(cart);
+
+                return;
+
+            }
+
+            cartContainer.style.display = "grid";
+            emptyCart.hidden = true;
+
+            cart.forEach((item) => {
+
+                const itemElement = document.createElement("div");
+                itemElement.className = "cart-item";
+
+
+                // PRODUCT IMAGE
+
+                const image = document.createElement("div");
+                image.className = "product-image";
+
+                const imageFile = item.image || getProductImage(item);
+
+                if (imageFile) {
+
+                    const bottleImage = document.createElement("img");
+
+                    bottleImage.src = imageFile;
+
+                    bottleImage.alt =
+                        item.name + " " + item.size;
+
+                    bottleImage.onerror = function () {
+
+                        this.style.display = "none";
+
+                        const fallback = document.createElement("span");
+
+                        fallback.textContent = item.name;
+
+                        image.appendChild(fallback);
+
+                    };
+
+                    image.appendChild(bottleImage);
+
+                } else {
+
+                    const fallback = document.createElement("span");
+
+                    fallback.textContent = item.name;
+
+                    image.appendChild(fallback);
+
+                }
+
+
+                // PRODUCT DETAILS
+
+                const details = document.createElement("div");
+                details.className = "product-details";
+
+                const category = document.createElement("p");
+                category.className = "product-category";
+
+                const product = PRODUCTS[normalizeProductName(item.name)];
+
+                category.textContent = product
+                    ? product.category + " · " + product.description
+                    : (item.category || "COLLECTION");
+
+                const name = document.createElement("h3");
+                name.className = "product-name";
+                name.textContent = item.name;
+
+                const size = document.createElement("p");
+                size.className = "product-size";
+                size.textContent = item.size || "Size to be confirmed";
+
+                const price = document.createElement("p");
+                price.className = "product-price";
+
+                const itemPrice = getItemPrice(item);
+
+                if (itemPrice !== null) {
+                    price.textContent = formatPrice(itemPrice);
+                } else {
+                    price.textContent = "Price to be confirmed";
+                }
+
+
+                // QUANTITY CONTROLS
+
+                const quantityControl = document.createElement("div");
+                quantityControl.className = "quantity-control";
+
+                const decreaseButton = document.createElement("button");
+                decreaseButton.type = "button";
+                decreaseButton.textContent = "−";
+                decreaseButton.setAttribute(
+                    "aria-label",
+                    "Decrease quantity"
+                );
+
+                decreaseButton.addEventListener("click", () => {
+                    changeQuantity(item.id, -1);
+                });
+
+                const quantity = document.createElement("span");
+                quantity.textContent = item.quantity;
+
+                const increaseButton = document.createElement("button");
+                increaseButton.type = "button";
+                increaseButton.textContent = "+";
+                increaseButton.setAttribute(
+                    "aria-label",
+                    "Increase quantity"
+                );
+
+                increaseButton.addEventListener("click", () => {
+                    changeQuantity(item.id, 1);
+                });
+
+                quantityControl.append(
+                    decreaseButton,
+                    quantity,
+                    increaseButton
+                );
+
+
+                // REMOVE BUTTON
+
+                const removeButton = document.createElement("button");
+                removeButton.className = "remove-button";
+                removeButton.type = "button";
+                removeButton.textContent = "REMOVE";
+
+                removeButton.addEventListener("click", () => {
+                    removeItem(item.id);
+                });
+
+                details.append(
+                    category,
+                    name,
+                    size,
+                    price,
+                    quantityControl,
+                    removeButton
+                );
+
+                itemElement.append(image, details);
+
+                cartItemsList.appendChild(itemElement);
+
+            });
+
+            updateSummary(cart);
+
+        }
+
+
+        // ==============================
+        // CHANGE PRODUCT QUANTITY
+        // ==============================
+
+        function changeQuantity(productId, amount) {
+
+            const cart = getCart();
+
+            const item = cart.find(product => product.id === productId);
+
+            if (!item) return;
+
+            item.quantity = Math.max(
+                0,
+                Math.floor(Number(item.quantity) || 0) + amount
+            );
+
+            const updatedCart = cart.filter(product => {
+                return Number(product.quantity) > 0;
+            });
+
+            saveCart(updatedCart);
+
+            renderCart();
+
+        }
+
+
+        // ==============================
+        // REMOVE PRODUCT
+        // ==============================
+
+        function removeItem(productId) {
+
+            const updatedCart = getCart().filter(item => {
+                return item.id !== productId;
+            });
+
+            saveCart(updatedCart);
+
+            renderCart();
+
+        }
+
+
+        // ==============================
+        // GET CONFIRMED ITEMS
+        // ==============================
+
+        function getConfirmedItems(cart) {
+
+            return cart.filter(item => {
+                return getItemPrice(item) !== null;
+            });
+
+        }
+
+
+        // ==============================
+        // GET PENDING ITEMS
+        // ==============================
+
+        function getPendingItems(cart) {
+
+            return cart.filter(item => {
+                return getItemPrice(item) === null;
+            });
+
+        }
+
+
+        // ==============================
+        // CALCULATE SUBTOTAL
+        // ==============================
+
+        function calculateSubtotal(cart) {
+
+            return getConfirmedItems(cart).reduce((sum, item) => {
+
+                const price = getItemPrice(item);
+                const quantity = Number(item.quantity);
+
+                if (
+                    price === null ||
+                    !Number.isFinite(quantity) ||
+                    quantity < 1
+                ) {
+                    return sum;
+                }
+
+                return sum + (price * quantity);
+
+            }, 0);
+
+        }
+
+
+        // ==============================
+        // UPDATE SUMMARY
+        // ==============================
+
+        function updateSummary(cart) {
+
+            const confirmedItems = getConfirmedItems(cart);
+            const pendingItems = getPendingItems(cart);
+
+            if (confirmedItems.length > 0) {
+
+                const subtotal = calculateSubtotal(cart);
+
+                subtotalElement.textContent = formatPrice(subtotal);
+
+            } else {
+
+                subtotalElement.textContent = "To be confirmed";
+
+            }
+
+            if (pendingItems.length > 0) {
+
+                const pendingCount = pendingItems.reduce((sum, item) => {
+                    return sum + (Number(item.quantity) || 0);
+                }, 0);
+
+                pendingPricingElement.textContent =
+                    pendingCount + (pendingCount === 1
+                        ? " item"
+                        : " items");
+
+            } else {
+
+                pendingPricingElement.textContent = "None";
+
+            }
+
+            totalElement.textContent = "To be confirmed";
+
+            checkoutButton.disabled = cart.length === 0;
+
+        }
+
+
+        // ==============================
+        // CHECKOUT AND WHATSAPP ORDER
+        // ==============================
+
+        function checkout(event) {
+
+            event.preventDefault();
+
+            const cart = updateCartProducts(getCart());
+
+            if (cart.length === 0) {
+
+                alert("Your cart is empty. Please add a fragrance first.");
+                return;
+
+            }
+
+            if (!checkoutForm.reportValidity()) {
+                return;
+            }
+
+            const customerName = document
+                .getElementById("customer-name")
+                .value.trim();
+
+            const customerPhone = document
+                .getElementById("customer-phone")
+                .value.trim();
+
+            const customerCity = document
+                .getElementById("customer-city")
+                .value.trim();
+
+            const customerAddress = document
+                .getElementById("customer-address")
+                .value.trim();
+
+            if (
+                !customerName ||
+                !customerPhone ||
+                !customerCity ||
+                !customerAddress
+            ) {
+
+                alert("Please complete all delivery details.");
+                return;
+
+            }
+
+
+            // CREATE WHATSAPP MESSAGE
+
+            let message = "HELLO LUMERA!\n";
+            message += "I would like to place an order.\n\n";
+
+            message += "CUSTOMER DETAILS\n";
+            message += "Name: " + customerName + "\n";
+            message += "Phone: " + customerPhone + "\n";
+            message += "City: " + customerCity + "\n";
+            message += "Delivery Address: " + customerAddress + "\n\n";
+
+            message += "ORDER DETAILS\n";
+
+            cart.forEach((item, index) => {
+
+                const itemPrice = getItemPrice(item);
+                const quantity = Number(item.quantity);
+
+                message += (index + 1) + ". " + item.name;
+
+                if (item.size) {
+                    message += " (" + item.size + ")";
+                }
+
+                message += "\nQuantity: " + quantity;
+
+                if (itemPrice !== null) {
+
+                    message += "\nUnit Price: " + formatPrice(itemPrice);
+
+                    message += "\nItem Total: " + formatPrice(
+                        itemPrice * quantity
+                    );
+
+                } else {
+
+                    message += "\nPrice: To be confirmed";
+
+                }
+
+                message += "\n\n";
+
+            });
+
+            const confirmedItems = getConfirmedItems(cart);
+            const pendingItems = getPendingItems(cart);
+
+            if (confirmedItems.length > 0) {
+
+                message +=
+                    "Subtotal (confirmed items): " +
+                    formatPrice(calculateSubtotal(cart)) +
+                    "\n";
+
+            } else {
+
+                message +=
+                    "Subtotal (confirmed items): To be confirmed\n";
+
+            }
+
+            if (pendingItems.length > 0) {
+
+                const pendingCount = pendingItems.reduce((sum, item) => {
+                    return sum + (Number(item.quantity) || 0);
+                }, 0);
+
+                message +=
+                    "Items with pending prices: " +
+                    pendingCount +
+                    "\n";
+
+            } else {
+
+                message += "Items with pending prices: None\n";
+
+            }
+
+            message += "Delivery Charges: To be confirmed\n";
+            message += "Final Total: To be confirmed\n\n";
+
+            message +=
+                "Please confirm the final prices, availability " +
+                "and delivery charges. Thank you!";
+
+
+            // OPEN WHATSAPP
+
+            const whatsappURL =
+                "https://wa.me/" +
+                WHATSAPP_NUMBER +
+                "?text=" +
+                encodeURIComponent(message);
+
+            const whatsappWindow = window.open(
+                whatsappURL,
+                "_blank"
+            );
+
+            if (whatsappWindow) {
+                whatsappWindow.opener = null;
+            } else {
+                window.location.href = whatsappURL;
+            }
+
+        }
+
+
+        // ==============================
+        // CONNECT CHECKOUT FORM
+        // ==============================
+
+        checkoutForm.addEventListener("submit", checkout);
+
+
+        // ==============================
+        // INITIAL CART DISPLAY
+        // ==============================
+
+        renderCart();
+
+
+        // ==============================
+        // REFRESH WHEN STORAGE CHANGES
+        // ==============================
+
+        window.addEventListener("storage", (event) => {
+
+            if (
+                event.key === CART_STORAGE_KEY ||
+                event.key === WISHLIST_STORAGE_KEY
+            ) {
+
+                renderCart();
+
+            }
+
+        });
+
+
+        // ==============================
+        // REFRESH WHEN RETURNING TO PAGE
+        // ==============================
+
+        window.addEventListener("pageshow", () => {
+
+            renderCart();
+
+        });
+
+    </script>
+
+</body>
+</html>

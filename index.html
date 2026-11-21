@@ -1,0 +1,1241 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Discover LUMERA — An Era of Light. Explore affordable luxury fragrances created to express individuality and character.">
+
+    <title>LUMERA | An Era of Light</title>
+
+    <style>
+
+        /* ==============================
+           GLOBAL STYLING
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            width: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            width: 100%;
+            min-width: 320px;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #292929;
+        }
+
+
+        /* ==============================
+           NAVBAR
+        ============================== */
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 50px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eeeeee;
+            gap: 20px;
+        }
+
+        .logo {
+            display: inline-flex;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 1px solid #a88955;
+            padding: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #222222;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #a88955;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-shrink: 0;
+        }
+
+        .nav-actions a {
+            text-decoration: none;
+            color: #222222;
+            font-size: 13px;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-actions a:hover {
+            color: #a88955;
+        }
+
+        .wishlist-count,
+        .cart-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 18px;
+            height: 18px;
+            padding: 0 5px;
+            margin-left: 3px;
+            border-radius: 50%;
+            background-color: #a88955;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+
+        /* ==============================
+           HERO SECTION
+        ============================== */
+
+        .hero {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: none;
+        }
+
+
+        /* ==============================
+           FEATURED FRAGRANCES
+        ============================== */
+
+        .featured {
+            padding: 85px 50px;
+            text-align: center;
+            background-color: #ffffff;
+        }
+
+        .section-label {
+            color: #a88955;
+            font-size: 11px;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .featured-heading {
+            font-size: 30px;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .featured-description {
+            font-size: 14px;
+            color: #777777;
+            line-height: 1.8;
+            max-width: 550px;
+            margin: 0 auto 45px;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            text-align: center;
+        }
+
+        .product-image {
+            height: 370px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(
+                145deg,
+                #f5f1e9,
+                #e9dfcf
+            );
+            margin-bottom: 22px;
+        }
+
+       .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 0;
+    display: block;
+}
+        
+
+        .product-placeholder {
+            color: #a88955;
+            font-size: 14px;
+            letter-spacing: 3px;
+        }
+
+        .product-category {
+            color: #a88955;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .product-name {
+            font-size: 19px;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .product-description {
+            font-size: 13px;
+            color: #777777;
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+
+        .product-link {
+            display: inline-block;
+            text-decoration: none;
+            color: #a88955;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid #a88955;
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .product-link:hover {
+            color: #70552f;
+        }
+
+        .explore-button {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 15px 35px;
+            background-color: #a88955;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .explore-button:hover {
+            background-color: #80643c;
+        }
+
+
+        /* ==============================
+           FRAGRANCE CARE SECTION
+        ============================== */
+
+        .fragrance-care {
+            padding: 85px 50px;
+            background-color: #EAE3D7;
+            text-align: center;
+        }
+
+        .care-heading {
+            font-size: 30px;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .care-intro {
+            max-width: 600px;
+            margin: 0 auto 50px;
+            color: #665F55;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .tip-card {
+            padding: 25px;
+            background-color: #D8CCBA;
+            border: 1px solid #C9B99F;
+        }
+
+        .tip-number {
+            display: block;
+            color: #927344;
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+        }
+
+        .tip-title {
+            font-size: 16px;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            color: #292929;
+        }
+
+        .tip-description {
+            color: #5F574D;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .care-note {
+            max-width: 750px;
+            margin: 40px auto 0;
+            color: #6E665B;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        .footer {
+            background-color: #242321;
+            color: #ffffff;
+            padding: 65px 50px 25px;
+        }
+
+        .footer-container {
+            max-width: 1150px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 50px;
+        }
+
+        .footer-brand img {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 1px solid #a88955;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+
+        .footer-tagline {
+            color: #c9b99f;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+        }
+
+        .footer-description {
+            color: #aaa69f;
+            font-size: 13px;
+            line-height: 1.9;
+            max-width: 280px;
+        }
+
+        .footer-heading {
+            color: #c5a46c;
+            font-size: 12px;
+            letter-spacing: 2px;
+            font-weight: normal;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #c7c4be;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #c5a46c;
+        }
+
+        .footer-contact-text {
+            color: #aaa69f;
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-contact-link {
+            display: inline-block;
+            color: #c5a46c;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid #a88955;
+            padding-bottom: 6px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact-link:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding-top: 25px;
+            border-top: 1px solid #494640;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #96918a;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+
+        /* ==============================
+           SCROLL REVEAL ANIMATION
+        ============================== */
+
+        .reveal {
+            opacity: 1;
+            transform: none;
+        }
+
+        .reveal-enabled .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal-enabled .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered animation delays */
+
+        .product-card:nth-child(1) {
+            transition-delay: 0s;
+        }
+
+        .product-card:nth-child(2) {
+            transition-delay: 0.15s;
+        }
+
+        .product-card:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .tip-card:nth-child(1) {
+            transition-delay: 0s;
+        }
+
+        .tip-card:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+
+        .tip-card:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+
+        .tip-card:nth-child(4) {
+            transition-delay: 0s;
+        }
+
+        .tip-card:nth-child(5) {
+            transition-delay: 0.1s;
+        }
+
+        .tip-card:nth-child(6) {
+            transition-delay: 0.2s;
+        }
+
+
+        /* Respect reduced-motion preferences */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            .reveal-enabled .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
+        }
+
+
+        /* ==============================
+           RESPONSIVE DESIGN
+        ============================== */
+
+        @media (max-width: 1000px) {
+
+            .navbar {
+                padding: 12px 25px;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-actions {
+                gap: 12px;
+            }
+
+        }
+
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                padding: 12px 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px 25px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .nav-actions {
+                justify-content: center;
+                gap: 18px;
+            }
+
+            .featured,
+            .fragrance-care {
+                padding: 60px 25px;
+            }
+
+            .product-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px 18px;
+            }
+
+            .product-image {
+                height: 280px;
+            }
+
+            .tips-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .footer {
+                padding: 55px 30px 25px;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .navbar {
+                padding: 12px 15px;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .logo img {
+                width: 58px;
+                height: 58px;
+            }
+
+            .nav-links {
+                width: 100%;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px 18px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .nav-actions {
+                width: 100%;
+                justify-content: center;
+                gap: 25px;
+            }
+
+            .nav-actions a {
+                font-size: 12px;
+            }
+
+            .featured,
+            .fragrance-care {
+                padding: 50px 20px;
+            }
+
+            .product-container,
+            .tips-container {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 320px;
+            }
+
+            .featured-heading,
+            .care-heading {
+                font-size: 24px;
+                line-height: 1.4;
+            }
+
+            .featured-description,
+            .care-intro {
+                font-size: 13px;
+            }
+
+            .tip-card {
+                padding: 22px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer {
+                padding: 50px 25px 25px;
+            }
+
+        }
+
+
+        @media (max-width: 360px) {
+
+            .nav-links {
+                gap: 10px 13px;
+            }
+
+            .nav-links a,
+            .nav-actions a {
+                font-size: 11px;
+            }
+
+            .featured,
+            .fragrance-care {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .product-image {
+                height: 280px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ==============================
+         NAVBAR
+    ============================== -->
+
+    <header>
+
+        <nav class="navbar" aria-label="Main navigation">
+
+            <a href="home.html" class="logo" aria-label="LUMERA homepage">
+                <img src="logo.png" alt="LUMERA logo">
+            </a>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="home.html" class="active" aria-current="page">Home</a>
+                </li>
+
+                <li>
+                    <a href="shop.html">Shop</a>
+                </li>
+
+                <li>
+                    <a href="story.html">Our Story</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+
+            </ul>
+
+            <div class="nav-actions">
+
+                <a href="wishlist.html">
+                    Wishlist
+                    <span class="wishlist-count" aria-label="Wishlist item count">0</span>
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                    <span class="cart-count" aria-label="Cart item count">0</span>
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ==============================
+         MAIN CONTENT
+    ============================== -->
+
+    <main>
+
+        <!-- HERO SECTION -->
+
+        <section class="hero" aria-label="LUMERA introduction">
+
+            <div class="hero-image">
+                <img
+                    src="hero.png"
+                    alt="LUMERA — An Era of Light, fragrance collection"
+                >
+            </div>
+
+        </section>
+
+
+        <!-- FEATURED FRAGRANCES -->
+
+        <section class="featured">
+
+            <p class="section-label">
+                THE LUMERA SELECTION
+            </p>
+
+            <h2 class="featured-heading">
+                Discover Your Signature Scent
+            </h2>
+
+            <p class="featured-description">
+                Every fragrance tells a story.
+                Explore a selection of scents created
+                to express individuality and character.
+            </p>
+
+
+            <div class="product-container">
+
+                <!-- DUSK -->
+
+                <div class="product-card reveal">
+
+                    <div class="product-image">
+                        <img src="DUSK.png" alt="LUMERA DUSK 50ml perfume bottle">
+                    </div>
+
+                    <p class="product-category">UNISEX</p>
+
+                    <h3 class="product-name">DUSK</h3>
+
+                    <p class="product-description">
+                        A distinctive fragrance for every expression.
+                    </p>
+
+                    <a href="shop.html" class="product-link">
+                        DISCOVER MORE
+                    </a>
+
+                </div>
+
+
+                <!-- UNTAMED -->
+
+                <div class="product-card reveal">
+
+                    <div class="product-image">
+                        <img src="UNTAMED.png" alt="LUMERA UNTAMED 50ml perfume bottle">
+                    </div>
+
+                    <p class="product-category">MEN</p>
+
+                    <h3 class="product-name">UNTAMED</h3>
+
+                    <p class="product-description">
+                        A bold fragrance with a confident character.
+                    </p>
+
+                    <a href="shop.html" class="product-link">
+                        DISCOVER MORE
+                    </a>
+
+                </div>
+
+
+                <!-- UNVEILED -->
+
+                <div class="product-card reveal">
+
+                    <div class="product-image">
+                        <img src="UNVEILED.png" alt="LUMERA UNVEILED 50ml perfume bottle">
+                    </div>
+
+                    <p class="product-category">WOMEN</p>
+
+                    <h3 class="product-name">UNVEILED</h3>
+
+                    <p class="product-description">
+                        A refined fragrance with its own identity.
+                    </p>
+
+                    <a href="shop.html" class="product-link">
+                        DISCOVER MORE
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <a href="shop.html" class="explore-button">
+                EXPLORE THE COLLECTION
+            </a>
+
+        </section>
+
+
+        <!-- FRAGRANCE CARE SECTION -->
+
+        <section class="fragrance-care">
+
+            <p class="section-label">
+                THE ART OF FRAGRANCE
+            </p>
+
+            <h2 class="care-heading">
+                Make Every Scent Last
+            </h2>
+
+            <p class="care-intro">
+                A fragrance deserves the right application
+                and care. Follow these professional tips to
+                help maintain its performance and character.
+            </p>
+
+
+            <div class="tips-container">
+
+                <!-- TIP 01 -->
+
+                <div class="tip-card reveal">
+
+                    <span class="tip-number">01 / PREPARATION</span>
+
+                    <h3 class="tip-title">
+                        Start with Clean Skin
+                    </h3>
+
+                    <p class="tip-description">
+                        Apply fragrance to clean, dry skin.
+                        This provides a fresh base for the
+                        fragrance to develop.
+                    </p>
+
+                </div>
+
+
+                <!-- TIP 02 -->
+
+                <div class="tip-card reveal">
+
+                    <span class="tip-number">02 / MOISTURISATION</span>
+
+                    <h3 class="tip-title">
+                        Moisturise Before Application
+                    </h3>
+
+                    <p class="tip-description">
+                        Apply an unscented moisturiser before
+                        your fragrance. Hydrated skin can help
+                        the scent remain noticeable for longer.
+                    </p>
+
+                </div>
+
+
+                <!-- TIP 03 -->
+
+                <div class="tip-card reveal">
+
+                    <span class="tip-number">03 / APPLICATION</span>
+
+                    <h3 class="tip-title">
+                        Focus on Pulse Points
+                    </h3>
+
+                    <p class="tip-description">
+                        Apply to suitable pulse points, such as
+                        the wrists and sides of the neck, where
+                        warmth can help diffuse the fragrance.
+                    </p>
+
+                </div>
+
+
+                <!-- TIP 04 -->
+
+                <div class="tip-card reveal">
+
+                    <span class="tip-number">04 / TECHNIQUE</span>
+
+                    <h3 class="tip-title">
+                        Avoid Rubbing
+                    </h3>
+
+                    <p class="tip-description">
+                        Allow the fragrance to settle and dry
+                        naturally. Rubbing the application area
+                        is unnecessary.
+                    </p>
+
+                </div>
+
+
+                <!-- TIP 05 -->
+
+                <div class="tip-card reveal">
+
+                    <span class="tip-number">05 / APPLICATION</span>
+
+                    <h3 class="tip-title">
+                        Apply Evenly
+                    </h3>
+
+                    <p class="tip-description">
+                        Follow the product's application
+                        guidance and use an appropriate amount
+                        for the setting and occasion.
+                    </p>
+
+                </div>
+
+
+                <!-- TIP 06 -->
+
+                <div class="tip-card reveal">
+
+                    <span class="tip-number">06 / STORAGE</span>
+
+                    <h3 class="tip-title">
+                        Store Your Fragrance Properly
+                    </h3>
+
+                    <p class="tip-description">
+                        Keep your perfume in a cool, dry place
+                        away from direct sunlight, excessive
+                        heat and temperature fluctuations.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <p class="care-note">
+                Fragrance longevity may vary depending on
+                formulation, skin chemistry, climate,
+                application method and environmental conditions.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <!-- BRAND INFORMATION -->
+
+            <div class="footer-brand">
+
+                <img src="logo.png" alt="LUMERA logo">
+
+                <p class="footer-tagline">
+                    LUMERA — AN ERA OF LIGHT
+                </p>
+
+                <p class="footer-description">
+                    Discover a world of fragrance where
+                    individuality meets elegance.
+                    Experience affordable luxury through
+                    scents created to express identity.
+                </p>
+
+            </div>
+
+
+            <!-- EXPLORE LINKS -->
+
+            <div class="footer-explore">
+
+                <h3 class="footer-heading">
+                    EXPLORE
+                </h3>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="home.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="shop.html">Shop</a>
+                    </li>
+
+                    <li>
+                        <a href="story.html">Our Story</a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- CUSTOMER CARE -->
+
+            <div class="footer-contact">
+
+                <h3 class="footer-heading">
+                    CUSTOMER CARE
+                </h3>
+
+                <p class="footer-contact-text">
+                    Have a question about our fragrances
+                    or need assistance? We'd be happy to
+                    hear from you.
+                </p>
+
+                <a href="contact.html" class="footer-contact-link">
+                    GET IN TOUCH
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- COPYRIGHT -->
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 LUMERA. ALL RIGHTS RESERVED.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==============================
+         WEBSITE JAVASCRIPT
+    ============================== -->
+
+    <script>
+
+        /* ==============================
+           CART AND WISHLIST COUNTERS
+        ============================== */
+
+        function readLocalStorage(key) {
+
+            try {
+
+                const savedData = localStorage.getItem(key);
+
+                return savedData ? JSON.parse(savedData) : [];
+
+            } catch (error) {
+
+                console.error("Could not read " + key, error);
+
+                return [];
+
+            }
+
+        }
+
+
+        function updateNavigationCounts() {
+
+            const wishlist = readLocalStorage("lumeraWishlist");
+            const cart = readLocalStorage("lumeraCart");
+
+            const wishlistCount = Array.isArray(wishlist)
+                ? wishlist.length
+                : 0;
+
+            const cartCount = Array.isArray(cart)
+                ? cart.reduce((total, item) => {
+                    return total + (Number(item.quantity) || 0);
+                }, 0)
+                : 0;
+
+
+            document.querySelectorAll(".wishlist-count").forEach((element) => {
+                element.textContent = wishlistCount;
+            });
+
+
+            document.querySelectorAll(".cart-count").forEach((element) => {
+                element.textContent = cartCount;
+            });
+
+        }
+
+
+        // Update counts when the page loads.
+
+        updateNavigationCounts();
+
+
+        // Update counts when changes happen in another tab.
+
+        window.addEventListener("storage", updateNavigationCounts);
+
+
+        // Update counts when returning to this page.
+
+        window.addEventListener("pageshow", updateNavigationCounts);
+
+
+        /* ==============================
+           SCROLL REVEAL ANIMATION
+        ============================== */
+
+        const revealElements = document.querySelectorAll(".reveal");
+
+        const reducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+
+        if ("IntersectionObserver" in window && !reducedMotion) {
+
+            document.body.classList.add("reveal-enabled");
+
+            const observer = new IntersectionObserver((entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("show");
+
+                        observer.unobserve(entry.target);
+
+                    }
+
+                });
+
+            }, {
+                threshold: 0.15
+            });
+
+
+            revealElements.forEach((element) => {
+
+                observer.observe(element);
+
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>

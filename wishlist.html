@@ -1,0 +1,1209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wishlist | LUMERA — An Era of Light</title>
+
+    <style>
+
+        /* ==============================
+           GLOBAL STYLING
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            width: 100%;
+            min-width: 320px;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #F7F4EE;
+            color: #242321;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* ==============================
+           NAVBAR
+        ============================== */
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 50px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eeeeee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo img {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 1px solid #a88955;
+            padding: 5px;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #222222;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #a88955;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .nav-actions a {
+            color: #222222;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-actions a:hover {
+            color: #a88955;
+        }
+
+        .wishlist-count,
+        .cart-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 18px;
+            height: 18px;
+            padding: 0 5px;
+            border-radius: 50%;
+            background-color: #a88955;
+            color: white;
+            font-size: 10px;
+            margin-left: 3px;
+        }
+
+
+        /* ==============================
+           PAGE HERO
+        ============================== */
+
+        .page-hero {
+            min-height: 330px;
+            background-color: #EAE3D7;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .page-hero .small-heading {
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #92784F;
+            margin-bottom: 20px;
+        }
+
+        .page-hero h1 {
+            font-family: Georgia, serif;
+            font-size: 58px;
+            font-weight: normal;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .page-hero p {
+            max-width: 550px;
+            font-size: 14px;
+            line-height: 1.9;
+            color: #625D55;
+        }
+
+
+        /* ==============================
+           WISHLIST SECTION
+        ============================== */
+
+        .wishlist-section {
+            padding: 85px 8%;
+            min-height: 450px;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .section-heading h2 {
+            font-family: Georgia, serif;
+            font-size: 34px;
+            font-weight: normal;
+        }
+
+        .item-total {
+            font-size: 13px;
+            color: #706A61;
+        }
+
+
+        /* ==============================
+           PRODUCT GRID
+        ============================== */
+
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .wishlist-card {
+            background-color: #EAE3D7;
+            border: 1px solid #D8CCBA;
+            transition: 0.3s ease;
+        }
+
+        .wishlist-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(36, 35, 33, 0.08);
+        }
+
+        .product-image {
+            height: 270px;
+            background-color: #E2D9CA;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-category {
+            font-size: 10px;
+            color: #92784F;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .product-info h3 {
+            font-family: Georgia, serif;
+            font-size: 23px;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .product-size {
+            font-size: 12px;
+            color: #706A61;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-size: 14px;
+            color: #393631;
+            margin-bottom: 22px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-button {
+            flex: 1;
+            padding: 13px 10px;
+            background-color: #242321;
+            border: 1px solid #242321;
+            color: #F7F4EE;
+            font-size: 10px;
+            letter-spacing: 1.3px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .action-button:hover {
+            background-color: #A68A5B;
+            border-color: #A68A5B;
+        }
+
+        .remove-button {
+            background-color: transparent;
+            color: #242321;
+            border-color: #A68A5B;
+        }
+
+        .remove-button:hover {
+            background-color: #E0D4C2;
+            color: #242321;
+            border-color: #A68A5B;
+        }
+
+
+        /* ==============================
+           EMPTY WISHLIST
+        ============================== */
+
+        .empty-wishlist {
+            text-align: center;
+            padding: 85px 20px;
+            background-color: #EAE3D7;
+            border: 1px solid #D8CCBA;
+        }
+
+        .empty-wishlist .heart {
+            font-size: 55px;
+            color: #A68A5B;
+            margin-bottom: 20px;
+        }
+
+        .empty-wishlist h2 {
+            font-family: Georgia, serif;
+            font-size: 34px;
+            font-weight: normal;
+            margin-bottom: 18px;
+        }
+
+        .empty-wishlist p {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #706A61;
+            margin-bottom: 30px;
+        }
+
+        .shop-link {
+            display: inline-block;
+            padding: 16px 35px;
+            background-color: #242321;
+            color: #F7F4EE;
+            border: 1px solid #242321;
+            font-size: 11px;
+            letter-spacing: 2px;
+            transition: 0.3s ease;
+        }
+
+        .shop-link:hover {
+            background-color: #A68A5B;
+            border-color: #A68A5B;
+        }
+
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            background-color: #242321;
+            color: #F7F4EE;
+            padding: 65px 8% 25px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 50px;
+        }
+
+        .footer-brand img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            font-family: Georgia, serif;
+            font-size: 13px;
+            letter-spacing: 2px;
+            color: #C8B58F;
+        }
+
+        .footer-column h3 {
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 22px;
+            color: #C8B58F;
+        }
+
+        .footer-column a {
+            display: block;
+            font-size: 12px;
+            color: #C9C5BD;
+            margin-bottom: 14px;
+            transition: 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: #C8B58F;
+        }
+
+        .footer-column p {
+            font-size: 12px;
+            color: #C9C5BD;
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #45423D;
+            padding-top: 22px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            color: #A9A49B;
+        }
+
+
+        /* ==============================
+           RESPONSIVE DESIGN
+        ============================== */
+
+        @media (max-width: 1100px) {
+
+            .navbar {
+                padding: 12px 25px;
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .nav-actions {
+                gap: 12px;
+            }
+
+            .wishlist-section {
+                padding: 75px 6%;
+            }
+
+        }
+
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                padding: 12px 20px;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-actions {
+                gap: 12px;
+            }
+
+            .page-hero h1 {
+                font-size: 43px;
+            }
+
+            .wishlist-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .wishlist-section {
+                padding: 65px 7%;
+            }
+
+            .section-heading h2 {
+                font-size: 29px;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .navbar {
+                justify-content: center;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-actions {
+                justify-content: center;
+            }
+
+            .page-hero {
+                min-height: 280px;
+            }
+
+            .page-hero h1 {
+                font-size: 34px;
+            }
+
+            .page-hero p {
+                font-size: 12px;
+            }
+
+            .wishlist-section {
+                padding: 50px 6%;
+            }
+
+            .wishlist-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading h2 {
+                font-size: 26px;
+            }
+
+            .product-actions {
+                flex-direction: row;
+            }
+
+            .empty-wishlist h2 {
+                font-size: 27px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            footer {
+                padding: 50px 7% 25px;
+            }
+
+        }
+
+
+        @media (max-width: 360px) {
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a,
+            .nav-actions a {
+                font-size: 11px;
+            }
+
+            .page-hero h1 {
+                font-size: 31px;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ==============================
+         NAVBAR
+    ============================== -->
+
+    <header class="navbar">
+
+        <a href="home.html" class="logo">
+            <img src="logo.png" alt="LUMERA Logo">
+        </a>
+
+        <ul class="nav-links">
+
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="shop.html">SHOP</a></li>
+            <li><a href="story.html">OUR STORY</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+
+        </ul>
+
+        <div class="nav-actions">
+
+            <a href="wishlist.html" class="active">
+                WISHLIST <span class="wishlist-count">0</span>
+            </a>
+
+            <a href="cart.html">
+                CART <span class="cart-count">0</span>
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==============================
+         WISHLIST HERO
+    ============================== -->
+
+    <section class="page-hero">
+
+        <div class="small-heading">
+            YOUR PERSONAL COLLECTION
+        </div>
+
+        <h1>MY WISHLIST</h1>
+
+        <p>
+            Keep the fragrances you love close.
+            Your favourite scents, all in one place.
+        </p>
+
+    </section>
+
+
+    <!-- ==============================
+         WISHLIST CONTENT
+    ============================== -->
+
+    <section class="wishlist-section">
+
+        <div class="section-heading">
+
+            <h2>Saved Fragrances</h2>
+
+            <span class="item-total" id="item-total">
+                0 Items
+            </span>
+
+        </div>
+
+        <div class="wishlist-grid" id="wishlist-grid"></div>
+
+
+        <div class="empty-wishlist" id="empty-wishlist" style="display: none;">
+
+            <div class="heart">♡</div>
+
+            <h2>Your Wishlist Is Empty</h2>
+
+            <p>
+                You haven't saved any fragrances yet.<br>
+                Explore our collection and find a scent worth keeping.
+            </p>
+
+            <a href="shop.html" class="shop-link">
+                EXPLORE COLLECTION
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <a href="home.html">
+                    <img src="logo.png" alt="LUMERA Logo">
+                </a>
+
+                <p>LUMERA — AN ERA OF LIGHT</p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>EXPLORE</h3>
+
+                <a href="home.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="story.html">Our Story</a>
+                <a href="contact.html">Contact</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>CUSTOMER CARE</h3>
+
+                <p>
+                    Have a question or need assistance?
+                    We're here to help you.
+                </p>
+
+                <a href="contact.html">GET IN TOUCH</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 LUMERA. ALL RIGHTS RESERVED.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==============================
+         JAVASCRIPT
+    ============================== -->
+
+    <script>
+
+        const WISHLIST_KEY = "lumeraWishlist";
+        const CART_KEY = "lumeraCart";
+
+        const wishlistGrid = document.getElementById("wishlist-grid");
+        const emptyWishlist = document.getElementById("empty-wishlist");
+        const itemTotal = document.getElementById("item-total");
+
+
+        // ==============================
+        // PRODUCT IMAGE MAPPING
+        // ==============================
+
+        const fragranceImages = {
+
+            "DUSK": "DUSK.png",
+            "AMBER CLOUD": "AMBER CLOUD.png",
+            "UNTAMED": "UNTAMED.png",
+            "ELARA": "ELARA.png",
+            "BLUE ECLIPSE": "BLUE ECLIPSE.png",
+            "UNVEILED": "UNVEILED.png"
+
+        };
+
+
+        const categoryImages = {
+
+            "15 ML": {
+                "WOMEN": "PINK.png",
+                "MEN": "BLUE.png",
+                "UNISEX": "BROWN.png"
+            },
+
+            "10 ML": {
+                "WOMEN": "pink-10.png",
+                "MEN": "blue-10.png",
+                "UNISEX": "brown-10.png"
+            }
+
+        };
+
+
+        // GET CORRECT PRODUCT IMAGE
+
+        function getProductImage(product) {
+
+            const name = String(product.name || "").trim().toUpperCase();
+
+            const size = String(product.size || "")
+                .trim()
+                .toUpperCase()
+                .replace(/\s+/g, " ");
+
+            const category = String(product.category || "")
+                .trim()
+                .toUpperCase();
+
+            // 50 ML AND 30 ML
+
+            if (
+                size.includes("50") ||
+                size.includes("30")
+            ) {
+
+                return fragranceImages[name] || "";
+
+            }
+
+
+            // DETERMINE PRODUCT CATEGORY
+
+            let gender = "";
+
+            if (category.includes("WOMEN")) {
+
+                gender = "WOMEN";
+
+            } else if (category.includes("MEN")) {
+
+                gender = "MEN";
+
+            } else if (category.includes("UNISEX")) {
+
+                gender = "UNISEX";
+
+            }
+
+
+            // 15 ML AND 10 ML
+
+            if (size.includes("15")) {
+
+                return categoryImages["15 ML"][gender] || "";
+
+            }
+
+            if (size.includes("10")) {
+
+                return categoryImages["10 ML"][gender] || "";
+
+            }
+
+
+            return "";
+
+        }
+
+
+        // ==============================
+        // GET WISHLIST
+        // ==============================
+
+        function getWishlist() {
+
+            try {
+
+                const data = JSON.parse(localStorage.getItem(WISHLIST_KEY));
+
+                return Array.isArray(data) ? data : [];
+
+            } catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+        // ==============================
+        // SAVE WISHLIST
+        // ==============================
+
+        function saveWishlist(wishlist) {
+
+            localStorage.setItem(
+                WISHLIST_KEY,
+                JSON.stringify(wishlist)
+            );
+
+        }
+
+
+        // ==============================
+        // UPDATE NAVBAR COUNTS
+        // ==============================
+
+        function updateCounts() {
+
+            const wishlist = getWishlist();
+
+            document.querySelectorAll(".wishlist-count").forEach(counter => {
+
+                counter.textContent = wishlist.length;
+
+            });
+
+
+            let cart = [];
+
+            try {
+
+                const data = JSON.parse(localStorage.getItem(CART_KEY));
+
+                cart = Array.isArray(data) ? data : [];
+
+            } catch (error) {
+
+                cart = [];
+
+            }
+
+
+            const cartQuantity = cart.reduce((total, item) => {
+
+                return total + (Number(item.quantity) || 0);
+
+            }, 0);
+
+
+            document.querySelectorAll(".cart-count").forEach(counter => {
+
+                counter.textContent = cartQuantity;
+
+            });
+
+        }
+
+
+        // ==============================
+        // DISPLAY WISHLIST
+        // ==============================
+
+        function displayWishlist() {
+
+            const wishlist = getWishlist();
+
+            wishlistGrid.innerHTML = "";
+
+            itemTotal.textContent =
+                wishlist.length +
+                (wishlist.length === 1 ? " Item" : " Items");
+
+            updateCounts();
+
+
+            if (wishlist.length === 0) {
+
+                emptyWishlist.style.display = "block";
+
+                wishlistGrid.style.display = "none";
+
+                return;
+
+            }
+
+
+            emptyWishlist.style.display = "none";
+
+            wishlistGrid.style.display = "grid";
+
+
+            wishlist.forEach((product, index) => {
+
+                const card = document.createElement("div");
+
+                card.className = "wishlist-card";
+
+
+                // PRODUCT IMAGE
+
+                const image = document.createElement("div");
+
+                image.className = "product-image";
+
+                const imageFile = getProductImage(product);
+
+
+                if (imageFile) {
+
+                    const bottleImage = document.createElement("img");
+
+                    bottleImage.src = imageFile;
+
+                    bottleImage.alt = product.name + " " + product.size;
+
+                    bottleImage.onerror = function () {
+
+                        this.style.display = "none";
+
+                        image.textContent = "Image unavailable";
+
+                    };
+
+                    image.appendChild(bottleImage);
+
+                } else {
+
+                    image.textContent = "Image unavailable";
+
+                }
+
+
+                // PRODUCT INFORMATION
+
+                const info = document.createElement("div");
+
+                info.className = "product-info";
+
+
+                const category = document.createElement("p");
+
+                category.className = "product-category";
+
+                category.textContent =
+                    product.category || "LUMERA COLLECTION";
+
+
+                const name = document.createElement("h3");
+
+                name.textContent =
+                    product.name || "LUMERA Fragrance";
+
+
+                const size = document.createElement("p");
+
+                size.className = "product-size";
+
+                size.textContent = product.size || "";
+
+
+                const priceElement = document.createElement("p");
+
+                priceElement.className = "product-price";
+
+
+                const price = Number(product.price);
+
+                priceElement.textContent =
+                    product.price !== null &&
+                    product.price !== "" &&
+                    Number.isFinite(price)
+                    ? "Rs. " + price.toLocaleString("en-PK")
+                    : "Price to be confirmed";
+
+
+                // PRODUCT ACTIONS
+
+                const actions = document.createElement("div");
+
+                actions.className = "product-actions";
+
+
+                // ADD TO CART
+
+                const addButton = document.createElement("button");
+
+                addButton.className = "action-button";
+
+                addButton.textContent = "ADD TO CART";
+
+                addButton.addEventListener("click", function () {
+
+                    addToCart(product);
+
+                });
+
+
+                // REMOVE FROM WISHLIST
+
+                const removeButton = document.createElement("button");
+
+                removeButton.className =
+                    "action-button remove-button";
+
+                removeButton.textContent = "REMOVE";
+
+                removeButton.addEventListener("click", function () {
+
+                    removeFromWishlist(index);
+
+                });
+
+
+                actions.appendChild(addButton);
+
+                actions.appendChild(removeButton);
+
+
+                info.appendChild(category);
+
+                info.appendChild(name);
+
+                info.appendChild(size);
+
+                info.appendChild(priceElement);
+
+                info.appendChild(actions);
+
+
+                card.appendChild(image);
+
+                card.appendChild(info);
+
+
+                wishlistGrid.appendChild(card);
+
+            });
+
+        }
+
+
+        // ==============================
+        // REMOVE FROM WISHLIST
+        // ==============================
+
+        function removeFromWishlist(index) {
+
+            const wishlist = getWishlist();
+
+            wishlist.splice(index, 1);
+
+            saveWishlist(wishlist);
+
+            displayWishlist();
+
+        }
+
+
+        // ==============================
+        // ADD TO CART
+        // ==============================
+
+        function addToCart(product) {
+
+            let cart = [];
+
+            try {
+
+                const data = JSON.parse(localStorage.getItem(CART_KEY));
+
+                cart = Array.isArray(data) ? data : [];
+
+            } catch (error) {
+
+                cart = [];
+
+            }
+
+
+            const existingProduct = cart.find(item => {
+
+                return item.id === product.id;
+
+            });
+
+
+            if (existingProduct) {
+
+                existingProduct.quantity =
+                    (Number(existingProduct.quantity) || 0) + 1;
+
+                // KEEP THE PRODUCT IMAGE
+
+                existingProduct.image =
+                    getProductImage(product);
+
+            } else {
+
+                cart.push({
+
+                    id: product.id,
+
+                    name: product.name,
+
+                    category: product.category,
+
+                    size: product.size,
+
+                    price: product.price,
+
+                    image: getProductImage(product),
+
+                    quantity: 1
+
+                });
+
+            }
+
+
+            localStorage.setItem(
+                CART_KEY,
+                JSON.stringify(cart)
+            );
+
+            updateCounts();
+
+            alert(product.name + " has been added to your cart!");
+
+        }
+
+
+        // ==============================
+        // STORAGE SYNCHRONIZATION
+        // ==============================
+
+        window.addEventListener("storage", function (event) {
+
+            if (
+                event.key === WISHLIST_KEY ||
+                event.key === CART_KEY
+            ) {
+
+                displayWishlist();
+
+            }
+
+        });
+
+
+        // ==============================
+        // INITIAL DISPLAY
+        // ==============================
+
+        window.addEventListener("pageshow", displayWishlist);
+
+        displayWishlist();
+
+    </script>
+
+</body>
+
+</html>
